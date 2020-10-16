@@ -11,7 +11,8 @@
 
 CIAO A TUTTIIIII!!!!!
 
-- Stefano! 
+- Stefano!
+- Nicola!
 
 ## License
 
