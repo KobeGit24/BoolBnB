@@ -4,6 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+// Migration per le sponsorizzazioni
+
 class CreateSponsorshipsTable extends Migration
 {
     /**
@@ -11,6 +13,7 @@ class CreateSponsorshipsTable extends Migration
      *
      * @return void
      */
+
     public function up()
     {
         Schema::create('sponsorships', function (Blueprint $table) {
@@ -18,7 +21,10 @@ class CreateSponsorshipsTable extends Migration
 
             $table -> date('start_date');
             $table -> date('end_date');
-            
+
+            $table -> foreignId('property_id'); // Chiave esterna per la proprietà corrispondente
+            $table -> foreignId('type_sponsorship_id'); // Chiave esterna per il tipo di sponsorizzazione
+
             $table->timestamps();
         });
     }
@@ -28,6 +34,7 @@ class CreateSponsorshipsTable extends Migration
      *
      * @return void
      */
+
     public function down()
     {
         Schema::dropIfExists('sponsorships');

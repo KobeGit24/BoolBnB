@@ -4,6 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+// Migration properties
+
 class CreatePropertiesTable extends Migration
 {
     /**
@@ -11,6 +13,7 @@ class CreatePropertiesTable extends Migration
      *
      * @return void
      */
+
     public function up()
     {
         Schema::create('properties', function (Blueprint $table) {
@@ -21,15 +24,20 @@ class CreatePropertiesTable extends Migration
             $table -> string('state');
             $table -> string('city');
             $table -> string('address');
-            $table -> decimal('lat', 7, 5);
-            $table -> decimal('lng', 7, 5);
+            $table -> longText('description');
+
+            $table -> decimal('lat', 9, 6);
+            $table -> decimal('lng', 9, 6);
+
             $table -> integer('m2');
             $table -> integer('floors');
             $table -> integer('beds');
             $table -> integer('bathrooms');
+
             $table -> boolean('available');
-            $table -> longText('description');
             $table -> boolean('deleted');
+            
+            $table -> foreignId('user_id'); // Chiave esterna per utente
 
             $table -> timestamps();
         });
@@ -40,6 +48,7 @@ class CreatePropertiesTable extends Migration
      *
      * @return void
      */
+
     public function down()
     {
         Schema::dropIfExists('properties');

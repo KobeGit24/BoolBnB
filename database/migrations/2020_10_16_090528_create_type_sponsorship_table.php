@@ -17,7 +17,7 @@ class CreateTypeSponsorshipTable extends Migration
             $table->id();
 
             $table -> string('name');
-            $table -> decimal(5,2);
+            $table -> decimal('price', 5, 2);
             
             $table->timestamps();
         });

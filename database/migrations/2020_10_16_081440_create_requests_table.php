@@ -4,6 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+// Migration Richieste
+
 class CreateRequestsTable extends Migration
 {
     /**
@@ -11,6 +13,7 @@ class CreateRequestsTable extends Migration
      *
      * @return void
      */
+
     public function up()
     {
         Schema::create('requests', function (Blueprint $table) {
@@ -22,6 +25,8 @@ class CreateRequestsTable extends Migration
             $table -> string('number');
             $table -> longText('text');
 
+            $table -> foreignId('property_id'); // Chiave esterna per la proprietà richiesta
+            
             $table->timestamps();
         });
     }
@@ -31,6 +36,7 @@ class CreateRequestsTable extends Migration
      *
      * @return void
      */
+
     public function down()
     {
         Schema::dropIfExists('requests');

@@ -6,6 +6,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+// Model di default Users
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -43,4 +45,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // per ogni user ci sono più proprietà
+    public function property(){
+        return $this -> HasMany(Property::class);
+    }
+
+    // Per ogni user c`è un solo pagante
+    public function payer(){
+        return $this -> belongsTo(Payer::class);
+    }
 }

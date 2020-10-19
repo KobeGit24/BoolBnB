@@ -4,6 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+// Migration per le visualizzazioni prorietà 
+
 class CreatePropertyViewsTable extends Migration
 {
     /**
@@ -17,6 +19,7 @@ class CreatePropertyViewsTable extends Migration
             $table->id();
 
             $table -> date('date');
+            $table -> foreignId('property_id'); // Chiave esterna per la proprietà corrispondente
             
             $table->timestamps();
         });
@@ -27,6 +30,7 @@ class CreatePropertyViewsTable extends Migration
      *
      * @return void
      */
+
     public function down()
     {
         Schema::dropIfExists('property_views');

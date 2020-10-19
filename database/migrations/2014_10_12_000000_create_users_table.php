@@ -4,6 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+// Migration Users
+
 class CreateUsersTable extends Migration
 {
     /**
@@ -11,6 +13,7 @@ class CreateUsersTable extends Migration
      *
      * @return void
      */
+
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
@@ -27,15 +30,13 @@ class CreateUsersTable extends Migration
             $table -> date('date_of_birth');
             $table -> boolean('visible');
 
+            $table -> string('img') -> default('user.png');
             $table -> rememberToken();
 
             
 
             $table->timestamps();
         });
-
-        // CREARE CAMPO IMMAGINE (MEDIUMBLOB - IMG USER)
-        DB::statement('ALTER TABLE users ADD img MEDIUMBLOB');
     }
 
     /**

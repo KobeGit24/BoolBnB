@@ -4,6 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+// Migration Paganti
+
 class CreatePayersTable extends Migration
 {
     /**
@@ -11,13 +13,13 @@ class CreatePayersTable extends Migration
      *
      * @return void
      */
+
     public function up()
     {
         Schema::create('payers', function (Blueprint $table) {
-            $table->id();
-
-            // TABELLA PONTE
             
+            $table->id();
+            $table -> foreignId('user_id'); // Chiave esterna per utente
             $table->timestamps();
         });
     }
@@ -27,6 +29,7 @@ class CreatePayersTable extends Migration
      *
      * @return void
      */
+
     public function down()
     {
         Schema::dropIfExists('payers');

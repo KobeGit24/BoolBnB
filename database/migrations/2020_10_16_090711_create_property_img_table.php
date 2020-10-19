@@ -4,6 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+// Migration per immagini delle proprietà
+
 class CreatePropertyImgTable extends Migration
 {
     /**
@@ -11,22 +13,20 @@ class CreatePropertyImgTable extends Migration
      *
      * @return void
      */
+
     public function up()
     {
         
         Schema::create('property_img', function (Blueprint $table) {
-            $table->id();
-            $table -> boolean('deleted');
             
-           
-
+            $table->id();
+            
+            $table -> boolean('deleted');
+            $table -> string('img');
+            $table -> foreignId('property_id'); // Chiave esterna per la proprietà corrispondente
+            
             $table->timestamps();
         });
-
-        
-         // CREARE CAMPO IMMAGINE (MEDIUMBLOB - IMG USER)
-         DB::statement('ALTER TABLE property_img ADD img MEDIUMBLOB');
-        
     }
 
     /**
