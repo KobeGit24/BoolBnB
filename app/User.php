@@ -51,8 +51,5 @@ class User extends Authenticatable
         return $this -> HasMany(Property::class);
     }
 
-    // Per ogni user c`è un solo pagante
-    public function payer(){
-        return $this -> belongsTo(Payer::class);
-    }
+    
 }

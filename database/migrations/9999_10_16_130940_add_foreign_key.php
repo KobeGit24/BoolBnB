@@ -18,14 +18,6 @@ class AddForeignKey extends Migration
     {
         // CHIAVI ESTERNE
 
-        // Per ogni Pagante c'è un solo utente
-        Schema::table('payers', function (Blueprint $table) {
-            $table -> foreign('user_id', 'payers-users') 
-                 -> onDelete('cascade')
-                 -> references('id') 
-                 -> on('users');
-        });
-
         // Per ogni proprietà c'è un solo user
         Schema::table('properties', function (Blueprint $table) {
             $table -> foreign('user_id', 'usr-prop') 
@@ -100,9 +92,6 @@ class AddForeignKey extends Migration
     {
 
         // Eliminazione Relations
-        Schema::table('payers', function (Blueprint $table) {
-            $table -> dropForeign('payers-users');
-        });
         
         Schema::table('properties', function (Blueprint $table) {
             $table -> dropForeign('usr-prop');
