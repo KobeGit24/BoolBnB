@@ -18,9 +18,9 @@ $factory->define(Property::class, function (Faker $faker) {
         'floors' => $faker -> numberBetween($min = 1, $max = 3),
         'beds' => $faker -> numberBetween($min = 2, $max = 10),
         'bathrooms' => $faker -> numberBetween($min = 1, $max = 5),
-        'available' => 1,
+        'available' => 0,
         'description' => $faker -> realText,
-        'deleted' => 1,
+        'deleted' => 0,
         
     ];
 });

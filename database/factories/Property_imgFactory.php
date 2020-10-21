@@ -9,6 +9,6 @@ use Faker\Generator as Faker;
 $factory->define(Property_img::class, function (Faker $faker) {
     return [
         'deleted' => 0,
-        'img' => $faker -> word . '.png',
+        'img' => 'property.jpg',
     ];
 });

@@ -13,7 +13,7 @@ class Property_imgSeeder extends Seeder
      */
     public function run()
     {
-        factory(Property_img::class, 100) 
+        factory(Property_img::class, 200) 
             -> make()
             -> each( function($property_img) {
                 $property = Property::inRandomOrder() -> first();

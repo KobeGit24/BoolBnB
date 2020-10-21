@@ -15,7 +15,7 @@ class Property_ServiceSeeder extends Seeder
      */
     public function run()
     {
-        factory(Property_service::class, 50) 
+        factory(Property_service::class, 200) 
             -> make()
             -> each( function($link) {
                 $property = Property::inRandomOrder() -> first();

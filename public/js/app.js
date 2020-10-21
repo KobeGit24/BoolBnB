@@ -49886,8 +49886,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/kobe24/Desktop/Boolean/BoolBnB/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/kobe24/Desktop/Boolean/BoolBnB/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/valeriotrinca/Desktop/BoolBnB/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/valeriotrinca/Desktop/BoolBnB/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
