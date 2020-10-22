@@ -43,8 +43,8 @@ class Property extends Model
     }
 
     // Per ogni proprietà ci sono piú richieste
-    public function request(){
-        return $this -> HasMany(Request::class);
+    public function property_request(){
+        return $this -> HasMany(Property_Request::class);
     }
 
     // Per ogni proprietà ci sono piú sponsorizzazioni

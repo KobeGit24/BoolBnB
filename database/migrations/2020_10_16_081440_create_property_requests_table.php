@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 // Migration Richieste
 
-class CreateRequestsTable extends Migration
+class CreatePropertyRequestsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -16,7 +16,7 @@ class CreateRequestsTable extends Migration
 
     public function up()
     {
-        Schema::create('requests', function (Blueprint $table) {
+        Schema::create('property_requests', function (Blueprint $table) {
             $table->id();
 
             $table -> string('user_email');
@@ -39,6 +39,6 @@ class CreateRequestsTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('requests');
+        Schema::dropIfExists('property_requests');
     }
 }

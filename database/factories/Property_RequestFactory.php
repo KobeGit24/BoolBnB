@@ -3,10 +3,10 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Model;
-use App\Request;
+use App\Property_Request;
 use Faker\Generator as Faker;
 
-$factory->define(Request::class, function (Faker $faker) {
+$factory->define(Property_Request::class, function (Faker $faker) {
     return [
         'user_email' => $faker -> email,
         'firstname'  => $faker -> firstname,

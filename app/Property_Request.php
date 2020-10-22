@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 // Model Richiesta
 
-class Request extends Model
+class Property_Request extends Model
 {
 
-    // Nome tabella gestito da laravel
+    // Nome tabella
+    protected $table = 'property_requests';
 
     protected $fillable = [
         'user_email',

@@ -43,7 +43,7 @@ class AddForeignKey extends Migration
         });
 
         // Per ogni richiesta c`è una sola proprietà 
-        Schema::table('requests', function (Blueprint $table) {
+        Schema::table('property_requests', function (Blueprint $table) {
             $table -> foreign('property_id', 'req-prop') 
                  -> onDelete('cascade')
                  -> references('id') 
@@ -106,7 +106,7 @@ class AddForeignKey extends Migration
             $table -> dropForeign('prop_views-prop');
         });
 
-        Schema::table('requests', function (Blueprint $table) {
+        Schema::table('property_requests', function (Blueprint $table) {
             $table -> dropForeign('req-prop');
         });
 
