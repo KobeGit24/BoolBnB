@@ -9,8 +9,8 @@ use Faker\Generator as Faker;
 
 $factory->define(Sponsorship::class, function (Faker $faker) {
     return [
-        'start_date' => $faker -> date,
-        'end_date'  => '2020/10/31',
+        // 'start_date' => $faker -> date,
+        // 'end_date'  => '2020/10/31',
         
     ];
 });

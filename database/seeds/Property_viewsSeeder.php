@@ -14,7 +14,7 @@ class Property_viewsSeeder extends Seeder
      */
     public function run()
     {
-        factory(Property_views::class, 200) 
+        factory(Property_views::class, 100) 
             -> make()
             -> each( function($property_view) {
                 $property = Property::inRandomOrder() -> first();

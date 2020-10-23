@@ -27,60 +27,39 @@ class SponsorshipSeeder extends Seeder
         //         $sponsorship -> save();
         //     });
 
-        // PASSATA
+        factory(Sponsorship::class) -> times(1) -> create([
+            'start_date' => '2020/10/20',
+            'end_date' => '2020/10/30',
+            'property_id' => 1,
+            'type_sponsorship_id' => 1
+        ]);
+
         factory(Sponsorship::class) -> times(1) -> create([
             'start_date' => '2020/10/15',
-            'end_date' => '2020/10/19',
-            'property_id' => 4,
-            'type_sponsorship_id' => 3
-        ]);
-
-        // PASSATA
-        factory(Sponsorship::class) -> times(1) -> create([
-            'start_date' => '2020/10/10',
-            'end_date' => '2020/10/11',
+            'end_date' => '2020/10/18',
             'property_id' => 2,
-            'type_sponsorship_id' => 3
-        ]);
-        
-        // ATTIVA
-        factory(Sponsorship::class) -> times(1) -> create([
-            'start_date' => '2020/10/20',
-            'end_date' => '2020/10/26',
-            'property_id' => 1,
-            'type_sponsorship_id' => 3
-        ]);
-        
-        // ATTIVA
-        factory(Sponsorship::class) -> times(1) -> create([
-            'start_date' => '2020/10/20',
-            'end_date' => '2020/10/22',
-            'property_id' => 2,
-            'type_sponsorship_id' => 3
+            'type_sponsorship_id' => 1
         ]);
 
-        // PASSATA
         factory(Sponsorship::class) -> times(1) -> create([
-            'start_date' => '2020/10/9',
-            'end_date' => '2020/10/10',
-            'property_id' => 10,
-            'type_sponsorship_id' => 3
-        ]);
-
-         // ATTIVA
-         factory(Sponsorship::class) -> times(1) -> create([
             'start_date' => '2020/10/20',
-            'end_date' => '2020/10/23',
+            'end_date' => '2020/10/30',
             'property_id' => 3,
-            'type_sponsorship_id' => 3
+            'type_sponsorship_id' => 1
         ]);
 
-         // ATTIVA
-         factory(Sponsorship::class) -> times(1) -> create([
-            'start_date' => '2020/10/20',
-            'end_date' => '2020/10/29',
+        factory(Sponsorship::class) -> times(1) -> create([
+            'start_date' => '2020/10/15',
+            'end_date' => '2020/10/18',
             'property_id' => 4,
-            'type_sponsorship_id' => 3
+            'type_sponsorship_id' => 1
+        ]);
+
+        factory(Sponsorship::class) -> times(1) -> create([
+            'start_date' => '2020/10/20',
+            'end_date' => '2020/10/30',
+            'property_id' => 5,
+            'type_sponsorship_id' => 1
         ]);
         
     }

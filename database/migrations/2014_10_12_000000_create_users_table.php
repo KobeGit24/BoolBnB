@@ -28,7 +28,7 @@ class CreateUsersTable extends Migration
 
             $table -> string('password');
             $table -> date('date_of_birth');
-            $table -> boolean('visible');
+            $table -> boolean('visible') -> default(1);
 
             $table -> string('img') -> default('user.png');
             $table -> rememberToken();

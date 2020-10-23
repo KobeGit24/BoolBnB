@@ -13,13 +13,13 @@ class Property_imgSeeder extends Seeder
      */
     public function run()
     {
-        factory(Property_img::class, 200) 
-            -> make()
-            -> each( function($property_img) {
-                $property = Property::inRandomOrder() -> first();
-                $property_img -> property() -> associate($property);
+        // factory(Property_img::class, 200) 
+        //     -> make()
+        //     -> each( function($property_img) {
+        //         $property = Property::inRandomOrder() -> first();
+        //         $property_img -> property() -> associate($property);
 
-                $property_img -> save();
-            });
+        //         $property_img -> save();
+        //     });
     }
 }
