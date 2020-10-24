@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-// Model Prorietà 
+// Model Prorietà
 
 class Property extends Model
 {
@@ -15,8 +15,8 @@ class Property extends Model
         'state',
         'city',
         'address',
-        'lat', // Latitudine 
-        'lng', // Longitudine
+        'lat', // Latitudine
+        'lon', // Longitudine
         'm2',
         'floors',
         'beds',
@@ -43,8 +43,8 @@ class Property extends Model
     }
 
     // Per ogni proprietà ci sono piú richieste
-    public function property_request(){
-        return $this -> HasMany(Property_Request::class);
+    public function request(){
+        return $this -> HasMany(Request::class);
     }
 
     // Per ogni proprietà ci sono piú sponsorizzazioni

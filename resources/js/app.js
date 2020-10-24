@@ -1,32 +1,76 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
 require('./bootstrap');
 
 window.Vue = require('vue');
+window.$ = require('jquery');
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
+// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+//
+// const app = new Vue({
+//     el: '#app',
+// });
 
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+function init() {
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+  getAutocompletePlaces();
+}
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+function getAutocompletePlaces() {
 
-const app = new Vue({
-    el: '#app',
-});
+  var placesAutocomplete = places({
+    appId: 'pl6JIIW6OD7S',
+    apiKey: '7748a0e1bed4673c3861620b3abcc682',
+    container: document.querySelector('#aa-search-input')
+  });
+
+  placesAutocomplete.on('change', function(e) {
+
+    console.log(e.suggestion);
+    console.log(e.suggestion.latlng.lng);
+    console.log(e.suggestion.latlng.lat);
+
+    var lat = e.suggestion.latlng.lng
+    var lat = e.suggestion.latlng.lat
+    var city = e.suggestion.name
+
+    sessionStorage.setItem('long', e.suggestion.latlng.lng)
+    sessionStorage.setItem('lat', e.suggestion.latlng.lat);
+    sessionStorage.setItem('city', e.suggestion.name);
+  });
+
+}
+
+// FUNZIONE ALGOLIA PER LA RICERCA PERSONALIZZATA
+
+// function algoliaResearchTest() {
+//
+// const client = algoliasearch('pl2XLKD9B9UN', '896e1ed6fd58893fa84cd9cac2d60597');
+// // const players = client.initIndex('BoolBnB');
+//
+// autocomplete(
+//   '#aa-search-input',
+//   {
+//     debug: true,
+//     templates: {
+//       dropdownMenu:
+//         '<div class="aa-dataset-player"></div>' +
+//         '<div class="aa-dataset-team"></div>',
+//     },
+//   },
+//   [
+//     {
+//       source: autocomplete.sources.hits(players, {hitsPerPage: 7}),
+//       displayKey: 'city',
+//       templates: {
+//         header: '<div class="aa-suggestions-category"></div>',
+//         suggestion({_highlightResult}) {
+//           return `<span>${_highlightResult.city.value}</span>`;
+//         },
+//         empty: '<div class="aa-empty">No matching city</div>',
+//       },
+//     }
+//   ]
+// );
+//
+// }
+
+$(document).ready(init)

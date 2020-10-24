@@ -6,8 +6,6 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-// Model di default Users
-
 class User extends Authenticatable
 {
     use Notifiable;
@@ -17,15 +15,14 @@ class User extends Authenticatable
      *
      * @var array
      */
-    
     protected $fillable = [
-        'firstname',
-        'lastname',
-        'email',
-        'password',
-        'date_of_birth',
-        'img',
-        'visible'
+      'firstname',
+      'lastname',
+      'email',
+      'password',
+      'date_of_birth',
+      'img',
+      'visible'
     ];
 
     /**
@@ -50,6 +47,4 @@ class User extends Authenticatable
     public function property(){
         return $this -> HasMany(Property::class);
     }
-
-    
 }
