@@ -13,10 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// questa route porta alla Homepage
 Route::get('/', 'GuestController@index') -> name('home');
-Route::post('/search', 'GuestController@search') -> name('bnb.search');
 
-
-
+// routes di default per le autenticazioni
 Auth::routes();
 
+// routes per gli utenti registrati (upr)
+Route::get('/dashboard/profile','UprController@show')-> name('dashboard');
+Route::get('/dashboard/newproperty','UprController@create')-> name('prop.create');
+
+// routes per gli utenti non registrati
+Route::get('/property/{id}', 'PropertyController@show' )-> name('prop.show');
+Route::get('/search','PropertyController@search')->name('search');
