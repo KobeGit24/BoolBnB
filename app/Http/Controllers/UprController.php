@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\User;
@@ -28,6 +29,27 @@ class UprController extends Controller
   // Form di aggiornamento
   public function update(){
     return view('upr-update');
+  }
+
+  // Store aggiornamento
+  public function store(Request $request){
+
+      
+      $validateData = $request -> validate([
+        'firstname' => ['string', 'max:255'],
+        'lastname' => ['string', 'max:255'],
+        'email' => ['string', 'email', 'max:255'],
+        'password' => ['string', 'min:8'],
+        'date_of_birth' => ['date']
+      ]);
+
+      $data = $request -> all();
+      $data['password'] = Hash::make($data['password']);
+
+      $usr = User::findOrFail(Auth::id());
+      $usr -> update($data);
+
+      return redirect() -> route('dashboard');
   }
 
   public function create()
