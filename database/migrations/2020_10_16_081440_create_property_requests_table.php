@@ -26,6 +26,7 @@ class CreatePropertyRequestsTable extends Migration
             $table -> longText('text');
 
             $table -> foreignId('property_id'); // Chiave esterna per la proprietà richiesta
+            $table -> foreignId('user_id');
             
             $table->timestamps();
         });

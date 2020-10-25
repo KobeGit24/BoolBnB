@@ -18,11 +18,16 @@ class Property_Request extends Model
         'lastname',
         'number',
         'text',
-        'property_id'
+        'property_id',
+        'user_id'
     ];
 
     // Per ogni richiesta c'è una sola proprietà 
     public function property(){
         return $this -> belongsTo(Property::class);
+    }
+
+    public function user(){
+        return $this -> belongsTo(User::class);
     }
 }

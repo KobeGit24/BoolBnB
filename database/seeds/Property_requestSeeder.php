@@ -18,7 +18,29 @@ class Property_requestSeeder extends Seeder
             'lastname' => 'ciao',
             'number' => 'ciao',
             'text' => 'ciao',
-            'property_id' => 1
+            'property_id' => 1,
+            'user_id' => 1
+            ]);
+
+        factory(Property_Request::class) -> times(1) -> create([
+            'user_email' => 'ciao@ciao.ciao',
+            'firstname' => 'ciao',
+            'lastname' => 'ciao',
+            'number' => 'ciao',
+            'text' => 'ciao',
+            'property_id' => 2,
+            'user_id' => 2
+            ]);
+        
+
+        factory(Property_Request::class) -> times(1) -> create([
+            'user_email' => 'ciao@ciao.ciao',
+            'firstname' => 'ciao',
+            'lastname' => 'ciao',
+            'number' => 'ciao',
+            'text' => 'ciao',
+            'property_id' => 2,
+            'user_id' => 2
             ]);
     }
 }

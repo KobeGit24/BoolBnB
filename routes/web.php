@@ -21,6 +21,7 @@ Auth::routes();
 
 // routes per gli utenti registrati (upr)
 Route::get('/dashboard/profile','UprController@show')-> name('dashboard');
+Route::get('/dashboard/profile/update-profile', 'UprController@update') -> name('upr.update'); // Restituisce la pagina per modificare i dati dell'account
 Route::get('/dashboard/newproperty','UprController@create')-> name('prop.create');
 
 // routes per gli utenti non registrati
