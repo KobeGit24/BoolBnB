@@ -19,10 +19,12 @@ class PropertyController extends Controller
   }
 
 
-  public function search() {
+  public function search(Request $request) {
 
-    $apartments = Property::all();
+    $requestInput = $request->all();
 
-    return view('search', compact('apartments'));
+    // dd($requestInput);
+
+    return view('search', compact('requestInput'));
   }
 }
