@@ -12,8 +12,19 @@
         @method('GET')
         <div class="form-group d-flex flex-row align-items-center">
           <div class="aa-input-container" id="aa-input-container">
-            <input  type="search" id="aa-search-input" class="aa-input-search"
-                    placeholder="Search for players or teams..." name="search" autocomplete="off" />
+            <input  type="search" id="aa-search-input"
+                    class="aa-input-search"
+                    placeholder="Search for players or teams..."
+                    name="search"
+                    autocomplete="off" />
+            <input  id="lat"
+                    type="hidden"
+                    name="lat"
+                    class="form-control">
+            <input  id="lng"
+                    type="hidden"
+                    name="lng"
+                    class="form-control">
           </div>
           <div class="search-button">
             <button type="submit" class="btn btn-primary">

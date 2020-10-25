@@ -26,3 +26,4 @@ Route::get('/dashboard/newproperty','UprController@create')-> name('prop.create'
 // routes per gli utenti non registrati
 Route::get('/property/{id}', 'PropertyController@show' )-> name('prop.show');
 Route::get('/search','PropertyController@search')->name('search');
+Route::get('/api/reseach','ApiController@apiResearch');
