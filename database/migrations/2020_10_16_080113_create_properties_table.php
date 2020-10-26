@@ -34,8 +34,8 @@ class CreatePropertiesTable extends Migration
             $table -> integer('beds');
             $table -> integer('bathrooms');
 
-            $table -> boolean('available');
-            $table -> boolean('deleted');
+            $table -> boolean('available') -> default(0);
+            $table -> boolean('deleted') -> default(0);
             
             $table -> foreignId('user_id'); // Chiave esterna per utente
 

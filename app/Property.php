@@ -16,7 +16,7 @@ class Property extends Model
         'city',
         'address',
         'lat', // Latitudine
-        'lon', // Longitudine
+        'lng', // Longitudine
         'm2',
         'floors',
         'beds',

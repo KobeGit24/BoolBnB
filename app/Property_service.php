@@ -12,8 +12,8 @@ class Property_service extends Model
     protected $table = 'property_service';
 
     protected $fillable = [
-        'id_property',
-        'id_service'
+        'property_id',
+        'service_id'
     ];
 
     // Per ogni servizio proprietà c'è una sola proprietà 
