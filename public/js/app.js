@@ -35299,9 +35299,8 @@ window.$ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.
 
 var Handlebars = __webpack_require__(/*! handlebars */ "./node_modules/handlebars/dist/cjs/handlebars.js");
 
-function init() {
-  getAutocompletePlaces();
-  searchProperties();
+function init() {// getAutocompletePlaces();
+  // searchProperties();
 } // FUNZIONE PER PRENDERE LATITUDINE E LONGITUDINE
 
 
