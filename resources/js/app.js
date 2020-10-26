@@ -7,8 +7,8 @@ var Handlebars = require("handlebars");
 
 function init() {
 
-  getAutocompletePlaces();
-  searchProperties();
+  // getAutocompletePlaces();
+  // searchProperties();
 }
 
 // FUNZIONE PER PRENDERE LATITUDINE E LONGITUDINE

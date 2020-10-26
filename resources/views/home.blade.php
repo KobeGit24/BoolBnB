@@ -55,4 +55,36 @@
     </div>
   </div>
 </section>
+
+<script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
+<script>
+
+  (function() {
+  var placesAutocomplete = places({
+    appId: 'pl6JIIW6OD7S',
+    apiKey: '7748a0e1bed4673c3861620b3abcc682',
+    container: document.querySelector('#aa-search-input')
+  });
+
+  placesAutocomplete.on('change', function(e) {
+
+    // console.log(e.suggestion);
+    // console.log(e.suggestion.latlng.lng);
+    // console.log(e.suggestion.latlng.lat);
+
+    $('#aa-search-input').val(e.suggestion.value);
+    $('#lat').val(e.suggestion.latlng.lat);
+    $('#lng').val(e.suggestion.latlng.lng);
+
+    // console.log("latitudine: ", $('#lat').val());
+    // console.log("longitudine: ", $('#lng').val());
+  });
+
+  placesAutocomplete.on('clear', function() {
+    $('#address').val('');
+    $('#lat').val('');
+    $('#lng').val('');
+  });
+  })();
+</script>
 @endsection
