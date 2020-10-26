@@ -2,9 +2,7 @@
 @section('content')
 
   <div style="margin-top: 200px;" class="d-flex flex-row">
-    <form class="container" action="{{ route('search')}}">
-      @csrf
-      @method('GET')
+    <form class="container" action="">
       <div class="form-group d-flex flex-row align-items-center">
         <div class="aa-input-container" id="aa-input-container">
           <input  type="search" id="aa-search-input"
@@ -24,11 +22,6 @@
                   value="{{ $requestInput['lng'] }}"
                   class="form-control">
         </div>
-        <div class="search-button">
-          {{-- <button type="submit" class="btn btn-primary">
-            CERCA
-          </button> --}}
-        </div>
       </div>
     </form>
   </div>
@@ -41,30 +34,9 @@
 
   </div>
 
+
   {{-- SEZIONE JS --}}
 
-  <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
-
-  <script>
-
-  (function() {
-      var placesAutocomplete = places({
-        appId: 'pl6JIIW6OD7S',
-        apiKey: '7748a0e1bed4673c3861620b3abcc682',
-        container: document.querySelector('#aa-search-input'),
-      });
-      var address = document.querySelector('#aa-search-input');
-        placesAutocomplete.on('change', function(e) {
-          document.querySelector("#aa-search-input").value = e.suggestion.value || "";
-          document.querySelector("#lat").value = e.suggestion.latlng.lat || "";
-          document.querySelector("#lng").value = e.suggestion.latlng.lng || "";
-        });
-        placesAutocomplete.on('clear', function() {
-          address.textContent = 'none';
-        });
-    })();
-
-  </script>
 
   <script id="property-template" type="text/x-handlebars-template">
     <div class="card my-3" style="width: 18rem;">
@@ -77,9 +49,53 @@
     </div>
   </script>
 
+
+
+
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
+
+  <script>
+
+    (function() {
+    var placesAutocomplete = places({
+      appId: 'pl6JIIW6OD7S',
+      apiKey: '7748a0e1bed4673c3861620b3abcc682',
+      container: document.querySelector('#aa-search-input')
+    });
+
+    placesAutocomplete.on('change', function(e) {
+
+      // console.log(e.suggestion);
+      // console.log(e.suggestion.latlng.lng);
+      // console.log(e.suggestion.latlng.lat);
+
+      $('#aa-search-input').val(e.suggestion.value);
+      $('#lat').val(e.suggestion.latlng.lat);
+      $('#lng').val(e.suggestion.latlng.lng);
+
+      // console.log("latitudine: ", $('#lat').val());
+      // console.log("longitudine: ", $('#lng').val());
+    });
+
+    placesAutocomplete.on('clear', function() {
+      $('#aa-search-input').val('');
+      $('#lat').val('');
+      $('#lng').val('');
+    });
+    })();
+
+  </script>
+
   <script>
 
   $(document).ready(function() {
+    $( "form" ).on( "submit", false );
     $("input").change(function(){
       searchProperties();
     });
@@ -118,10 +134,6 @@
 
       url: 'http://127.0.0.1:8000/api/reseach',
       method: 'GET',
-      data: {
-        lat: latInput,
-        lng: lngInput
-      },
       success: function (properties) {
 
         var target = $('#property-wall');
@@ -157,5 +169,4 @@
   }
 
   </script>
-
 @endsection

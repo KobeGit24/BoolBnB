@@ -7,9 +7,7 @@
         <h1> SCEGLI DOVE ANDARE</h1>
     </div>
     <div class="d-flex flex-row">
-      <form class="container" action="{{ route('search')}}" method="post">
-        @csrf
-        @method('GET')
+      <form class="container" action="{{ route('search')}}">
         <div class="form-group d-flex flex-row align-items-center">
           <div class="aa-input-container" id="aa-input-container">
             <input  type="search" id="aa-search-input"
@@ -56,6 +54,7 @@
   </div>
 </section>
 
+
 <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
 <script>
 
@@ -81,7 +80,7 @@
   });
 
   placesAutocomplete.on('clear', function() {
-    $('#address').val('');
+    $('#aa-search-input').val('');
     $('#lat').val('');
     $('#lng').val('');
   });
