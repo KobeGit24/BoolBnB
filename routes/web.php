@@ -30,6 +30,9 @@ Route::post('/dashboard/profile/update-profile/store', 'UprController@store') ->
 Route::get('/dashboard/newproperty','UprController@create')-> name('prop.create');
 Route::post('/dashboard/newproperty/store', 'UprController@property_store') -> name('prop.store');
 
+//Delete property
+Route::get('/dashboard/profile/delete/{id}', 'UprController@delete') -> name('prop.destroy');
+
 
 // ------ routes per gli utenti non registrati
 Route::get('/property/{id}', 'PropertyController@show' )-> name('prop.show');
