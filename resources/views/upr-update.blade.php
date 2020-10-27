@@ -28,10 +28,18 @@
             </ul>
         </div>
     @endif
-    <form method="post" action="{{route('upr.store')}}">
+
+    
+    <form method="post" action="{{route('upr.store')}}" enctype="multipart/form-data">
 
         @csrf
         @method('POST')
+
+        <div class="form-group">
+            <img src="{{asset('img_db/users')}}/{{auth() -> user() -> img}}">
+            <label for="image"> Change image profile: </label>
+            <input type="file" name="image">
+        </div>
 
         <div class="form-group">
             <label for="firstname"> Firstname: </label>

@@ -61,7 +61,23 @@ class UprController extends Controller
             'password' => ['string', 'min:8'],
             'date_of_birth' => ['date']
         ]);
+        
+        // Se nella request c`è un immagine allora la si imposta come profilo
+        if ($request -> file('image') ){
+            
+            // Si ricava nome, estensione e percorso dell`immagine
+            $file = $request -> file('image');
+            $destinationPath = 'img_db/users/';
+            $name_image = date('YmdHis');
+            $profile_image = $name_image . '.' . $request -> image -> extension();
+            $file -> move($destinationPath, $profile_image);
 
+            // Si aggiorna il campo dell`usr
+            $current_usr = User::findOrFail(Auth::id());
+            $current_usr -> update(['img' => $profile_image]);
+        }
+
+        // Si aggiorano le altre informazioni, con hash password
         $data = $request -> all();
         $data['password'] = Hash::make($data['password']);
 

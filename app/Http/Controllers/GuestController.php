@@ -17,7 +17,7 @@ class GuestController extends Controller
 {
     // HOMEPAGE
     public function index(){
-
+        
         // Import data
         $data_sponsorship = Sponsorship::where('end_date', '>', date("Y/m/d")) -> take(N_ANNUNCI) -> get();
         $data_property = Property::all();

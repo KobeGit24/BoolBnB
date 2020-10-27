@@ -4,7 +4,7 @@
 <section id="jumbo" class="justify-content-around">
   <div style="margin-top: 150px;" class="container-full">
     <div class="title text-center height-center">
-        <h1> SCEGLI DOVE ANDARE</h1>
+    <h1> SCEGLI DOVE ANDARE</h1>
     </div>
     <div class="d-flex flex-row">
       <form class="container" action="{{ route('search')}}">
