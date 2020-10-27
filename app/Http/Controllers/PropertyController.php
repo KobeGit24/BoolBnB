@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 use App\Property;
 use App\Property_service;
 use App\Property_request;
+use App\Property_views;
 
 class PropertyController extends Controller
 {
@@ -15,6 +17,11 @@ class PropertyController extends Controller
 
     $prop = Property::findOrFail($id);
     $services = Property_service::all();
+
+    $new_view = Property_views::create([
+        'date' => date("Y-m-d H:i:s"),
+        'property_id' => $prop -> id
+    ]);
 
     return view('property-show', compact('prop', 'services'));
   }
