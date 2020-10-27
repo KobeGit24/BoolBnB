@@ -30,7 +30,7 @@
           <p class="card-text">{{ $d_p-> address }}</p>
           <a href="{{ route('prop.show', $d_p -> id) }}" class="btn btn-primary align-self-center">Vedi annuncio</a> {{-- Porta alla pagina dell'annuncio --}}
           <a href="{{ route('prop.destroy', $d_p -> id) }}" class="btn btn-danger align-self-center">Disabilita</a> {{-- Disabilita la visualizzazione della casa --}}
-          <a href="{{ route('prop.show', $d_p -> id) }}" class="btn btn-warning align-self-center">Edit</a> {{-- Modifica i dati dell'annuncio --}}
+          <a href="{{ route('prop.edit', $d_p -> id) }}" class="btn btn-warning align-self-center">Edit</a> {{-- Modifica i dati dell'annuncio --}}
 
         </div>
       @endforeach

@@ -97,7 +97,7 @@ class UprController extends Controller
         }
 
         return redirect() -> route('dashboard');
-        }
+    }
     
     public function delete($id){
         $property = Property::findOrFail($id);
@@ -108,6 +108,29 @@ class UprController extends Controller
 
     public function property_edit($id){
 
+        $property = Property::findOrFail($id);
+        $services = Service::all();
+
+        return view('prop-edit', compact('property', 'services'));
+    }
+
+    public function property_edit_store(Request $request){
+
+        $validateData = $request -> validate([
+            'name' => ['required', 'string', 'max:255'],
+            'description' => ['required','string', 'max:255'],
+            'm2' => ['required', 'numeric'],
+            'floors' => ['required', 'numeric', 'min:1'],
+            'beds' => ['required','numeric', 'min:1'],
+            'bathrooms' => ['required','numeric', 'min:1'],
+            'full_address' => ['required']
+        ]);
+
+        $data = $request -> all();
+        $property_update = Property::findOrFail($data['id_property_edit']);
+        $property_update -> update($data);
+
+        return redirect() -> route('dashboard');
     }
 
 
