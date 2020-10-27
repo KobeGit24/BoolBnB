@@ -14,8 +14,6 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        //factory(User::class, 50) -> create();
-
         factory(User::class) -> times(1) -> create([
             'firstname' => 'Valerio',
             'lastname' => 'Trinca',

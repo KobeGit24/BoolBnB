@@ -15,18 +15,7 @@ class SponsorshipSeeder extends Seeder
      */
     public function run()
     {
-        // factory(Sponsorship::class, 50) 
-        //     -> make()
-        //     -> each( function($sponsorship) {
-        //         $property = Property::inRandomOrder() -> first();
-        //         $type = Type_Sponsorship::inRandomOrder() -> first();
-
-        //         $sponsorship -> property() -> associate($property);
-        //         $sponsorship -> type_sponsorship() -> associate($type);
-
-        //         $sponsorship -> save();
-        //     });
-
+       
         factory(Sponsorship::class) -> times(1) -> create([
             'start_date' => '2020/10/20',
             'end_date' => '2020/10/30',

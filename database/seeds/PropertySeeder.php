@@ -14,15 +14,6 @@ class PropertySeeder extends Seeder
      */
     public function run()
     {
-        // factory(Property::class, 200) 
-        //     -> make()
-        //     -> each( function($property) {
-        //         $usr = User::inRandomOrder() -> first();
-        //         $property -> user() -> associate($usr);
-
-        //         $property -> save();
-        //     });
-
         factory(Property::class) -> times(1) -> create([
             'name' => 'Appartamento Milano centro',
             'state' => 'Italy',

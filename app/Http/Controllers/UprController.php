@@ -13,15 +13,30 @@ use App\Property_Request;
 use App\Service;
 use App\Property_service;
 
+/*
+    Controller per gli utenti registrati
+
+    Questo controller contiene:
+    - show
+    - update
+    - store
+    - create
+    - property_store
+    - delete
+    - property_edit
+    - property_edit_store
+*/
+
 class UprController extends Controller
 {
 
+    // Solo se autenticati
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    // Show Dashboard
+    // Show Dashboard - restituisce le proprietà e le richieste assegnate ad un determinato utente
     public function show()
     {
         $properties = Property::where('user_id', '=', Auth::id()) -> get();
@@ -30,14 +45,15 @@ class UprController extends Controller
         return view('dashboard', compact('properties', 'requests'));
     }
 
-    // Form di aggiornamento
+    // Form di aggiornamento utente
     public function update(){
         return view('upr-update');
     }
 
-    // Store aggiornamento
+    // Store aggiornamento informazioni utente
     public function store(Request $request){
 
+        // Validazione
         $validateData = $request -> validate([
             'firstname' => ['string', 'max:255'],
             'lastname' => ['string', 'max:255'],
@@ -55,15 +71,17 @@ class UprController extends Controller
         return redirect() -> route('dashboard');
     }
 
-    public function create()
-    {
+    // Restituisce la view per creare una nuova proprietà
+    public function create(){
         $services = Service::all();
 
         return view('create-property', compact('services'));
     }
 
+    // Salva la nuova proprietà
     public function property_store(Request $request){
         
+        // Validazione
         $validateData = $request -> validate([
         'name' => ['required', 'string', 'max:255'],
         'description' => ['required','string', 'max:255'],
@@ -78,7 +96,8 @@ class UprController extends Controller
         $new_property = Property::create($data);
         
         $property_id = (Property::latest() -> first()) -> id;
-
+        
+        // Salva i servizi associati alla nuova proprietà
         $services_db = Service::all();
         $services_array = [];
 
@@ -96,9 +115,11 @@ class UprController extends Controller
             }
         }
 
+        // Redirect verso la home
         return redirect() -> route('dashboard');
     }
     
+    // Rende non visibile una determinata proprietà
     public function delete($id){
         $property = Property::findOrFail($id);
 
@@ -106,6 +127,7 @@ class UprController extends Controller
         return redirect() -> route('dashboard');
     }
 
+    // Restituisce la view per modificare una proprietà
     public function property_edit($id){
 
         $property = Property::findOrFail($id);
@@ -114,8 +136,10 @@ class UprController extends Controller
         return view('prop-edit', compact('property', 'services'));
     }
 
+    // Salva le modifiche della proprietà
     public function property_edit_store(Request $request){
 
+        // Validazione
         $validateData = $request -> validate([
             'name' => ['required', 'string', 'max:255'],
             'description' => ['required','string', 'max:255'],
@@ -130,6 +154,7 @@ class UprController extends Controller
         $property_update = Property::findOrFail($data['id_property_edit']);
         $property_update -> update($data);
 
+        // Redirect verso la dashboard
         return redirect() -> route('dashboard');
     }
 

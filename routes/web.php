@@ -22,20 +22,20 @@ Auth::routes();
 // ----- routes per gli utenti registrati (upr)
 Route::get('/dashboard/profile','UprController@show')-> name('dashboard');
 
-// Restituisce la pagina per modificare i dati dell'account
-Route::get('/dashboard/profile/update-profile', 'UprController@update') -> name('upr.update'); 
-Route::post('/dashboard/profile/update-profile/store', 'UprController@store') -> name('upr.store');
+    // Restituisce la pagina per modificare i dati dell'account
+    Route::get('/dashboard/profile/update-profile', 'UprController@update') -> name('upr.update'); 
+    Route::post('/dashboard/profile/update-profile/store', 'UprController@store') -> name('upr.store');
 
-// create Property
-Route::get('/dashboard/newproperty','UprController@create')-> name('prop.create');
-Route::post('/dashboard/newproperty/store', 'UprController@property_store') -> name('prop.store');
+    // create Property
+    Route::get('/dashboard/newproperty','UprController@create')-> name('prop.create');
+    Route::post('/dashboard/newproperty/store', 'UprController@property_store') -> name('prop.store');
 
-//Delete property
-Route::get('/dashboard/profile/delete/{id}', 'UprController@delete') -> name('prop.destroy');
+    //Delete property
+    Route::get('/dashboard/profile/delete/{id}', 'UprController@delete') -> name('prop.destroy');
 
-//Edit Property
-Route::get('/dashboard/profile/edit/{id}', 'UprController@property_edit') -> name('prop.edit');
-Route::post('/dashboard/profile/edit/{id}/store', 'UprController@property_edit_store') -> name('prop.edit.store');
+    //Edit Property
+    Route::get('/dashboard/profile/edit/{id}', 'UprController@property_edit') -> name('prop.edit');
+    Route::post('/dashboard/profile/edit/{id}/store', 'UprController@property_edit_store') -> name('prop.edit.store');
 
 // ------ routes per gli utenti non registrati
 Route::get('/property/{id}', 'PropertyController@show' )-> name('prop.show');
