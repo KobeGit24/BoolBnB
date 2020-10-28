@@ -15,7 +15,10 @@ class Service extends Model
     ];
 
     // per ogni servizio ci sono più proprietà
-    public function property_service(){
-        return $this -> HasMany(Property_service::class);
+    // public function property_service(){
+    //     return $this -> hasMany(Property_service::class);
+    // }
+    public function apartments() {
+    return $this->belongsToMany(Property_service::class);
     }
 }

@@ -18,6 +18,6 @@ class Type_Sponsorship extends Model
 
     // Per ogni tipo sponsorizzazione ci sono più sponsorizzazioni con questo tipo
     public function sponsorship(){
-        return $this -> HasMany(Sponsorship::class);
+        return $this -> hasMany(Sponsorship::class);
     }
 }

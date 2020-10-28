@@ -16,13 +16,13 @@ class Property_service extends Model
         'service_id'
     ];
 
-    // Per ogni servizio proprietà c'è una sola proprietà 
+    // Per ogni servizio proprietà c'è una sola proprietà
     public function property(){
-        return $this -> belongsTo(Property::class);
+        return $this ->belongsTo(Property::class);
     }
 
     // Per ogni servizio c'è un solo tipo di servizio
     public function service(){
-        return $this -> belongsTo(Service::class);
+        return $this ->belongsTo(Service::class);
     }
 }
