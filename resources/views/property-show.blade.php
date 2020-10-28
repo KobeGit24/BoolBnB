@@ -27,6 +27,7 @@
 
       <h2> Dati sull'abitazione </h2>
       
+  <img src="{{asset('img_db/properties')}}/{{$prop -> img}}">
       <div id="container-box"> 
             <div class="casella">
                 <p> Città: </p>

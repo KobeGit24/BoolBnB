@@ -19,7 +19,7 @@
             </div>
         @endif
 
-        <form method="post" action="{{route('prop.store')}}">
+        <form method="post" action="{{route('prop.store')}}" enctype="multipart/form-data">
             @csrf
             @method('POST')
 
@@ -62,6 +62,11 @@
             <div class="form-group">
                 <label for="bathrooms">Bathrooms </label>
                 <input type = "number" name="bathrooms">
+            </div>
+
+            <div class="form-group">
+                <label for="image"> Property image: </label>
+                <input type="file" name="image">
             </div>
 
             {{-- NASCOSTI --}}

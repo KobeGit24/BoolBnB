@@ -109,11 +109,26 @@ class UprController extends Controller
         ]);
         
         $data = $request -> all();
+
+        
+        // Se nella request c`è un immagine allora la si imposta come copertina
+        if ($request -> file('image') ){
+            
+            // Si ricava nome, estensione e percorso dell`immagine
+            $file = $request -> file('image');
+            $destinationPath = 'img_db/properties/';
+            $name_image = date('YmdHis');
+            $profile_image = $name_image . '.' . $request -> image -> extension();
+            $file -> move($destinationPath, $profile_image);
+
+            $data['img'] = $profile_image;
+            
+        }
+
         $new_property = Property::create($data);
         
-        $property_id = (Property::latest() -> first()) -> id;
-        
         // Salva i servizi associati alla nuova proprietà
+        $property_id = (Property::latest() -> first()) -> id;
         $services_db = Service::all();
         $services_array = [];
 
@@ -167,6 +182,20 @@ class UprController extends Controller
         ]);
 
         $data = $request -> all();
+
+         // Se nella request c`è un immagine allora la si imposta come copertina
+         if ($request -> file('image') ){
+            
+            // Si ricava nome, estensione e percorso dell`immagine
+            $file = $request -> file('image');
+            $destinationPath = 'img_db/properties/';
+            $name_image = date('YmdHis');
+            $profile_image = $name_image . '.' . $request -> image -> extension();
+            $file -> move($destinationPath, $profile_image);
+
+            $data['img'] = $profile_image;
+            
+        }
         $property_update = Property::findOrFail($data['id_property_edit']);
         $property_update -> update($data);
 

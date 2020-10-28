@@ -47,7 +47,7 @@ function searchProperties() {
 
   $.ajax({
 
-    url: 'http://127.0.0.1:8000/api/search',
+    url: '/api/search',
     method: 'GET',
     success: function (properties) {
 

@@ -29,6 +29,7 @@ class PropertySeeder extends Seeder
             'description' => 'Grazioso appartamento in centro a Milano',
             'deleted' => 0,
             'user_id' => 1,
+            'img' => 'property.jpg'
         ]);
 
         factory(Property::class) -> times(1) -> create([
@@ -46,6 +47,7 @@ class PropertySeeder extends Seeder
             'description' => 'Villa storica alle porte di Roma, circondata dalla natura',
             'deleted' => 0,
             'user_id' => 2,
+            'img' => 'property.jpg'
         ]);
 
         factory(Property::class) -> times(1) -> create([
@@ -63,6 +65,7 @@ class PropertySeeder extends Seeder
             'description' => 'Appartamento centralissimo a Roma, via del corso',
             'deleted' => 0,
             'user_id' => 2,
+            'img' => 'property.jpg'
         ]);
 
         factory(Property::class) -> times(1) -> create([
@@ -80,6 +83,7 @@ class PropertySeeder extends Seeder
             'description' => 'Attico panoraico alle porte di Napoli, vista mare',
             'deleted' => 0,
             'user_id' => 3,
+            'img' => 'property.jpg'
         ]);
 
         factory(Property::class) -> times(1) -> create([
@@ -97,6 +101,7 @@ class PropertySeeder extends Seeder
             'description' => 'Appartamento appena ristrutturato, Napoli centrale',
             'deleted' => 0,
             'user_id' => 3,
+            'img' => 'property.jpg'
         ]);
 
         

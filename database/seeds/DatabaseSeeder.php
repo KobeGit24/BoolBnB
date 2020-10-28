@@ -13,7 +13,6 @@ class DatabaseSeeder extends Seeder
     {
         $this -> call(UserSeeder::class);
         $this -> call(PropertySeeder::class);
-        $this -> call(Property_imgSeeder::class);
         $this -> call(Property_viewsSeeder::class);
         $this -> call(ServiceSeeder::class);
         $this -> call(Type_SponsorshipSeeder::class);

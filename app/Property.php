@@ -23,6 +23,7 @@ class Property extends Model
         'bathrooms',
         'available',
         'description',
+        'img',
         'deleted',
         'user_id'
     ];
@@ -30,11 +31,6 @@ class Property extends Model
     // Per ogni proprietà c'è un solo user
     public function user(){
         return $this ->belongsTo(User::class);
-    }
-
-    // Per ogni proprietà ci sono più immagini
-    public function property_img(){
-        return $this ->hasMany(Property_img::class);
     }
 
     // Per ogni proprietà ci sono piú visualizzazioni

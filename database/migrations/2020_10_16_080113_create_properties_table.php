@@ -33,6 +33,7 @@ class CreatePropertiesTable extends Migration
             $table -> integer('floors');
             $table -> integer('beds');
             $table -> integer('bathrooms');
+            $table -> string('img') -> default('property.jpg');
 
             $table -> boolean('available') -> default(0);
             $table -> boolean('deleted') -> default(0);
