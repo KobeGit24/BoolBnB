@@ -16,15 +16,15 @@ class CreatePropertyImgTable extends Migration
 
     public function up()
     {
-        
+
         Schema::create('property_img', function (Blueprint $table) {
-            
+
             $table->id();
-            
+
             $table -> boolean('deleted');
             $table -> string('img');
             $table -> foreignId('property_id'); // Chiave esterna per la proprietà corrispondente
-            
+
             $table->timestamps();
         });
     }

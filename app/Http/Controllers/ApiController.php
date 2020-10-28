@@ -2,17 +2,87 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use App\Property;
+use App\Service;
 
 class ApiController extends Controller
 {
-  public function apiResearch(Request $request) {
+  public function apiSearch(Request $request) {
 
-    $prop = Property::all();
+    $floors = $request->input('floors');
+    $beds = $request->input('beds');
+    $wifi = $request->input('wifi');
+    $parking = $request->input('parking');
+    $pool = $request->input('pool');
+    $sauna = $request->input('sauna');
+    $seaView = $request->input('seaView');
+    $concierge = $request->input('concierge');
+    $sponsors = $request->input('sponsors');
 
-    // dd($prop);
+    $queryProperty = Property::query();
+    $queryPropertySponsor = Property::query();
 
-    return response()->json($prop);
+
+    if ($wifi == 'checked') {
+      $queryProperty->whereHas('services', function (Builder $query) {
+        $query->where('service_id', '=', '1');
+      });
+    }
+
+    if ($parking == 'checked') {
+      $queryProperty->whereHas('services', function (Builder $query) {
+        $query->where('service_id', '=', '2');
+      });
+    }
+
+    if ($pool == 'checked') {
+      $queryProperty->whereHas('services', function (Builder $query) {
+        $query->where('service_id', '=', '3');
+      });
+    }
+
+    if ($concierge == 'checked') {
+      $queryProperty->whereHas('services', function (Builder $query) {
+        $query->where('service_id', '=', '4');
+      });
+    }
+
+    if ($sauna == 'checked') {
+      $queryProperty->whereHas('services', function (Builder $query) {
+        $query->where('service_id', '=', '5');
+      });
+    }
+
+    if ($seaView == 'checked') {
+      $queryProperty->whereHas('services', function (Builder $query) {
+        $query->where('service_id', '=', '6');
+      });
+    }
+
+    if ($floors) {
+      $queryProperty->where('floors', ">=", $floors);
+    }
+
+    if ($beds) {
+      $queryProperty->where('beds', ">=", $beds);
+    }
+
+    if ($sponsors) {
+      $queryPropertySponsor->whereHas('sponsorships', function (Builder $query) {
+        $query->where('type_sponsorship_id', '>', '0');
+      });
+    }
+
+    $prop = $queryProperty->get();
+    $propPromo = $queryPropertySponsor->get();
+
+    return response()->json([
+          'sponsored' => $propPromo,
+          'normal' => $prop,
+      ]);
+    // return response()->json($prop);
   }
 }
