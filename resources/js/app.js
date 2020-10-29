@@ -8,6 +8,7 @@ var Handlebars = require("handlebars");
 function init() {
 
   searchProperties();
+  headerColor();
 }
 
 // FUNZIONE PER CALCOLO KM DI DISTANZA
@@ -40,48 +41,15 @@ function searchProperties() {
 
   var latInput = $('#lat').val();
   var lngInput = $('#lng').val();
-  var rad = $( "select#radius option:checked" ).val();
 
   // console.log(lat);
   // console.log(lng);
 
   $.ajax({
 
-    url: '/api/search',
+    url: 'http://127.0.0.1:8000/api/reseach',
     method: 'GET',
     success: function (properties) {
-
-      // console.log(properties);
-      // console.log(properties.sponsored);
-      // console.log(properties.normal);
-
-      var sponsoredProp = properties.sponsored;
-      var normalProp = properties.normal;
-
-      // console.log(normalProp);
-
-      var targetPromo = $('#property-wall-promo');
-      targetPromo.html('');
-
-      var templatePromo = $('#property-template').html();
-      var compiled = Handlebars.compile(templatePromo);
-
-      for (var i = 0; i < sponsoredProp.length; i++) {
-
-        var propertySponsor = sponsoredProp[i];
-
-        var latPropSponsor = propertySponsor.lat;
-        var lngPropSponsor = propertySponsor.lng;
-
-        var validDistance = getDistance(latInput,lngInput,latPropSponsor,lngPropSponsor) <= rad;
-
-        var propertySponsorHTML = compiled(propertySponsor);
-
-        if (validDistance) {
-
-          targetPromo.append(propertyHTML);
-        }
-      }
 
       var target = $('#property-wall');
       target.html('');
@@ -89,14 +57,14 @@ function searchProperties() {
       var template = $('#property-template').html();
       var compiled = Handlebars.compile(template);
 
-      for (var i = 0; i < normalProp.length; i++) {
+      for (var i = 0; i < properties.length; i++) {
 
-        var property = normalProp[i];
+        var property = properties[i];
 
         var latProp = property.lat;
         var lngProp = property.lng;
 
-        var validDistance = getDistance(latInput,lngInput,latProp,lngProp) <= rad;
+        var validDistance = getDistance(latInput,lngInput,latProp,lngProp) <= 20;
 
         var propertyHTML = compiled(property);
 
@@ -111,6 +79,21 @@ function searchProperties() {
     error: function (err) {
 
       console.log('error: ', err);
+    }
+  });
+}
+
+// Funzione per lo scroll dell'header
+
+function headerColor() {
+
+  $(window).scroll(function () {
+    var $this = $(this),
+    $head = $('.navbar-header');
+    if ($this.scrollTop() > 20) {
+      $head.addClass('scrolled');
+    } else {
+      $head.removeClass('scrolled');
     }
   });
 }

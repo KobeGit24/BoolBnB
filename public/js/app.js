@@ -35301,6 +35301,7 @@ var Handlebars = __webpack_require__(/*! handlebars */ "./node_modules/handlebar
 
 function init() {
   searchProperties();
+  headerColor();
 } // FUNZIONE PER CALCOLO KM DI DISTANZA
 
 
@@ -35322,47 +35323,23 @@ function getDistance(lat1, lon1, lat2, lon2) {
 
 function searchProperties() {
   var latInput = $('#lat').val();
-  var lngInput = $('#lng').val();
-  var rad = $("select#radius option:checked").val(); // console.log(lat);
+  var lngInput = $('#lng').val(); // console.log(lat);
   // console.log(lng);
 
   $.ajax({
-    url: '/api/search',
+    url: 'http://127.0.0.1:8000/api/reseach',
     method: 'GET',
     success: function success(properties) {
-      // console.log(properties);
-      // console.log(properties.sponsored);
-      // console.log(properties.normal);
-      var sponsoredProp = properties.sponsored;
-      var normalProp = properties.normal; // console.log(normalProp);
-
-      var targetPromo = $('#property-wall-promo');
-      targetPromo.html('');
-      var templatePromo = $('#property-template').html();
-      var compiled = Handlebars.compile(templatePromo);
-
-      for (var i = 0; i < sponsoredProp.length; i++) {
-        var propertySponsor = sponsoredProp[i];
-        var latPropSponsor = propertySponsor.lat;
-        var lngPropSponsor = propertySponsor.lng;
-        var validDistance = getDistance(latInput, lngInput, latPropSponsor, lngPropSponsor) <= rad;
-        var propertySponsorHTML = compiled(propertySponsor);
-
-        if (validDistance) {
-          targetPromo.append(propertyHTML);
-        }
-      }
-
       var target = $('#property-wall');
       target.html('');
       var template = $('#property-template').html();
       var compiled = Handlebars.compile(template);
 
-      for (var i = 0; i < normalProp.length; i++) {
-        var property = normalProp[i];
+      for (var i = 0; i < properties.length; i++) {
+        var property = properties[i];
         var latProp = property.lat;
         var lngProp = property.lng;
-        var validDistance = getDistance(latInput, lngInput, latProp, lngProp) <= rad;
+        var validDistance = getDistance(latInput, lngInput, latProp, lngProp) <= 20;
         var propertyHTML = compiled(property);
 
         if (validDistance) {
@@ -35372,6 +35349,20 @@ function searchProperties() {
     },
     error: function error(err) {
       console.log('error: ', err);
+    }
+  });
+} // Funzione per lo scroll dell'header
+
+
+function headerColor() {
+  $(window).scroll(function () {
+    var $this = $(this),
+        $head = $('.navbar-header');
+
+    if ($this.scrollTop() > 20) {
+      $head.addClass('scrolled');
+    } else {
+      $head.removeClass('scrolled');
     }
   });
 }
@@ -35436,8 +35427,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/valeriotrinca/Desktop/BoolBnB/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/valeriotrinca/Desktop/BoolBnB/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/valeriotrinca/Desktop/BoolBnB 2/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/valeriotrinca/Desktop/BoolBnB 2/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

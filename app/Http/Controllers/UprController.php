@@ -12,6 +12,7 @@ use App\Property;
 use App\Property_Request;
 use App\Service;
 use App\Property_service;
+use App\Property_views;
 
 /*
     Controller per gli utenti registrati
@@ -25,6 +26,7 @@ use App\Property_service;
     - delete
     - property_edit
     - property_edit_store
+    - get_info
 */
 
 class UprController extends Controller
@@ -40,9 +42,7 @@ class UprController extends Controller
     public function show()
     {
         $properties = Property::where('user_id', '=', Auth::id()) -> get();
-        $requests = Property_Request::where('user_id', '=', Auth::id()) -> get();
-        
-        return view('dashboard', compact('properties', 'requests'));
+        return view('dashboard', compact('properties'));
     }
 
     // Form di aggiornamento utente
@@ -111,7 +111,7 @@ class UprController extends Controller
         $data = $request -> all();
 
         
-        // Se nella request c`è un immagine allora la si imposta come copertina
+        // Se nella request c`è un immagine allora la si imposta 
         if ($request -> file('image') ){
             
             // Si ricava nome, estensione e percorso dell`immagine
@@ -182,20 +182,6 @@ class UprController extends Controller
         ]);
 
         $data = $request -> all();
-
-         // Se nella request c`è un immagine allora la si imposta come copertina
-         if ($request -> file('image') ){
-            
-            // Si ricava nome, estensione e percorso dell`immagine
-            $file = $request -> file('image');
-            $destinationPath = 'img_db/properties/';
-            $name_image = date('YmdHis');
-            $profile_image = $name_image . '.' . $request -> image -> extension();
-            $file -> move($destinationPath, $profile_image);
-
-            $data['img'] = $profile_image;
-            
-        }
         $property_update = Property::findOrFail($data['id_property_edit']);
         $property_update -> update($data);
 
@@ -203,5 +189,12 @@ class UprController extends Controller
         return redirect() -> route('dashboard');
     }
 
+    // Restituisce le requests e le views di una determinata proprietà, lo può visualizzare solo il proprietario dell`annuncio
+    public function get_info($id){
+        $requests = Property_Request::where('user_id', '=', Auth::id()) -> get();
+        $views = Property_views::where('property_id', '=', $id) -> get();
 
+        
+        return view('prop-info', compact('requests', 'views'));
+    }
 }

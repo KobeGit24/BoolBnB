@@ -37,6 +37,9 @@ Route::get('/dashboard/profile','UprController@show')-> name('dashboard');
     Route::get('/dashboard/profile/edit/{id}', 'UprController@property_edit') -> name('prop.edit');
     Route::post('/dashboard/profile/edit/{id}/store', 'UprController@property_edit_store') -> name('prop.edit.store');
 
+    //Statistiche e messaggi
+    Route::get('/property/{id}/info', 'UprController@get_info') -> name('prop.info');
+
 // ------ routes per gli utenti non registrati
 Route::get('/property/{id}', 'PropertyController@show' )-> name('prop.show');
 Route::get('/search','PropertyController@search')->name('search');

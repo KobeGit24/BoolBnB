@@ -1,0 +1,40 @@
+main {
+
+  background-color: #cee5f2;
+
+  border-top: 1px solid white;
+
+  min-height: 759px;
+}
+
+.home-main-container {
+
+  padding: 50px 15% 50px 20% ;
+}
+
+#jumbo {
+
+  margin-bottom: 60px;
+}
+
+.sponsored h3 {
+
+  margin-bottom: 50px;
+}
+
+.property-sponsored {
+
+  margin-bottom: 20px;
+  padding: 20px;
+
+  width: 400px;
+  height: 250px;
+
+  background-color: white;
+
+  border-radius: 20px;
+
+  -webkit-box-shadow: 0 0 3px lightgrey;
+    box-shadow: 0 0 3px grey;
+    transition: all .25s ease-in-out;
+}

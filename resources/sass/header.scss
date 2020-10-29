@@ -1,0 +1,56 @@
+#header {
+
+
+  .navbar-header {
+
+    padding: 20px 20%;
+
+    height: 70px;
+    width: 100%;
+
+    z-index: 150;
+    position: fixed;
+
+    background-color: white;
+
+    -webkit-box-shadow: 0 0 10px lightgrey;
+      box-shadow: 0 0 10px lightgrey;
+
+      .navbar-header-right {
+
+        .join {
+
+          padding-left: 20px;
+        }
+      }
+
+    a {
+
+      font-size: 20px;
+      font-weight: bold;
+
+      &:hover {
+
+        text-decoration: none;
+      }
+    }
+
+    .logo {
+
+      color: #ff385c;
+    }
+
+    .login {
+
+      color: black;
+    }
+
+    input {
+
+      height: 40px;
+
+      border-radius: 20px;
+      padding: 0 10px;
+    }
+  }
+}
