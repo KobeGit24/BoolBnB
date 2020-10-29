@@ -10,7 +10,6 @@ function init() {
   searchProperties();
   headerColor();
 }
-
 // FUNZIONE PER CALCOLO KM DI DISTANZA
 
 
@@ -41,39 +40,61 @@ function searchProperties() {
 
   var latInput = $('#lat').val();
   var lngInput = $('#lng').val();
-
-  // console.log(lat);
-  // console.log(lng);
+  var rad = $( "select#radius option:checked" ).val();
 
   $.ajax({
 
-    url: 'http://127.0.0.1:8000/api/reseach',
+    url: 'http://127.0.0.1:8000/api/search',
     method: 'GET',
     success: function (properties) {
 
+      var sponsoredProperties = properties.sponsored;
+      var normalProperties = properties.normal;
+
+      var sponsorNum = [];
+
+      var targetPromo = $('#property-wall-promo');
+      targetPromo.html('');
+      var templatePromo = $('#property-template').html();
+      var compiled = Handlebars.compile(templatePromo);
+
+
       var target = $('#property-wall');
       target.html('');
-
       var template = $('#property-template').html();
       var compiled = Handlebars.compile(template);
 
-      for (var i = 0; i < properties.length; i++) {
+      for (var i = 0; i < sponsoredProperties.length; i++) {
 
-        var property = properties[i];
+        var sponsoredProp = sponsoredProperties[i];
+        var sponsoredPropId = sponsoredProp.id;
 
-        var latProp = property.lat;
-        var lngProp = property.lng;
+        sponsorNum.push(sponsoredPropId);
 
-        var validDistance = getDistance(latInput,lngInput,latProp,lngProp) <= 20;
-
-        var propertyHTML = compiled(property);
-
-        if (validDistance) {
-
-          target.append(propertyHTML);
-        }
       }
 
+      for (var i = 0; i < normalProperties.length; i++) {
+
+        var normalProp = normalProperties[i];
+        var normalPropId = normalProp.id;
+        var latProp = normalProp.lat;
+        var lngProp = normalProp.lng;
+
+        var validDistance = getDistance(latInput,lngInput,latProp,lngProp) <= rad;
+        var propertyHTML = compiled(normalProp);
+
+        if (validDistance) {
+          if (sponsorNum.includes(normalPropId)) {
+
+            targetPromo.append(propertyHTML);
+
+          } else {
+            target.append(propertyHTML);
+          }
+
+        }
+
+      }
 
     },
     error: function (err) {

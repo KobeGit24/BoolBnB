@@ -61,10 +61,10 @@ class UprController extends Controller
             'password' => ['string', 'min:8'],
             'date_of_birth' => ['date']
         ]);
-        
+
         // Se nella request c`è un immagine allora la si imposta come profilo
         if ($request -> file('image') ){
-            
+
             // Si ricava nome, estensione e percorso dell`immagine
             $file = $request -> file('image');
             $destinationPath = 'img_db/users/';
@@ -96,7 +96,7 @@ class UprController extends Controller
 
     // Salva la nuova proprietà
     public function property_store(Request $request){
-        
+
         // Validazione
         $validateData = $request -> validate([
         'name' => ['required', 'string', 'max:255'],
@@ -107,13 +107,13 @@ class UprController extends Controller
         'bathrooms' => ['required','numeric', 'min:1'],
         'full_address' => ['required']
         ]);
-        
+
         $data = $request -> all();
 
-        
-        // Se nella request c`è un immagine allora la si imposta 
+
+        // Se nella request c`è un immagine allora la si imposta
         if ($request -> file('image') ){
-            
+
             // Si ricava nome, estensione e percorso dell`immagine
             $file = $request -> file('image');
             $destinationPath = 'img_db/properties/';
@@ -122,11 +122,11 @@ class UprController extends Controller
             $file -> move($destinationPath, $profile_image);
 
             $data['img'] = $profile_image;
-            
+
         }
 
         $new_property = Property::create($data);
-        
+
         // Salva i servizi associati alla nuova proprietà
         $property_id = (Property::latest() -> first()) -> id;
         $services_db = Service::all();
@@ -135,7 +135,7 @@ class UprController extends Controller
         foreach($services_db as $service){
             array_push($services_array, $service -> name);
         }
-        
+
         foreach($services_array as $service){
 
             if(array_key_exists($service, $data)){
@@ -149,7 +149,7 @@ class UprController extends Controller
         // Redirect verso la home
         return redirect() -> route('dashboard');
     }
-    
+
     // Rende non visibile una determinata proprietà
     public function delete($id){
         $property = Property::findOrFail($id);
@@ -223,10 +223,11 @@ class UprController extends Controller
 
     // Restituisce le requests e le views di una determinata proprietà, lo può visualizzare solo il proprietario dell`annuncio
     public function get_info($id){
-        $requests = Property_Request::where('user_id', '=', Auth::id()) -> get();
-        $views = Property_views::where('property_id', '=', $id) -> get();
+      $requests = Property_Request::where('user_id', '=', Auth::id()) -> get();
+      $views = Property_views::where('property_id', '=', $id) -> get();
+      $viewsNumber = count($views);
 
-        
-        return view('prop-info', compact('requests', 'views'));
+
+      return view('prop-info', compact('requests', 'views', 'viewsNumber'));
     }
 }

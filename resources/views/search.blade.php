@@ -83,11 +83,11 @@
 
   <div style="margin-top: 100px;" class="d-flex flex-row bg-light">
 
-    <ul id="property-wall-promo" class="list-group list-group-horizontal">
+    <ul id="property-wall-promo" class="list-group list-group-horizontal bg-danger">
 
     </ul>
 
-    <ul id="property-wall" class="list-group list-group-horizontal">
+    <ul id="property-wall" class="list-group list-group-horizontal bg-success">
 
     </ul>
 
@@ -219,66 +219,57 @@
         pool : pool,
         sauna : sauna,
         seaView : seaView,
-        concierge : concierge,
-        sponsors : sponsors
+        concierge : concierge
       },
       success: function (properties) {
 
-        // console.log(properties);
-        // console.log(properties.sponsored);
-        // console.log(properties.normal);
+        var sponsoredProperties = properties.sponsored;
+        var normalProperties = properties.normal;
 
-        var sponsoredProp = properties.sponsored;
-        var normalProp = properties.normal;
-
-        // console.log(normalProp);
+        var sponsorNum = [];
 
         var targetPromo = $('#property-wall-promo');
         targetPromo.html('');
-
         var templatePromo = $('#property-template').html();
         var compiled = Handlebars.compile(templatePromo);
 
-        for (var i = 0; i < sponsoredProp.length; i++) {
-
-          var propertySponsor = sponsoredProp[i];
-
-          var latPropSponsor = propertySponsor.lat;
-          var lngPropSponsor = propertySponsor.lng;
-
-          var validDistance = getDistance(latInput,lngInput,latPropSponsor,lngPropSponsor) <= rad;
-
-          var propertySponsorHTML = compiled(propertySponsor);
-
-          if (validDistance) {
-
-            targetPromo.append(propertyHTML);
-          }
-        }
 
         var target = $('#property-wall');
         target.html('');
-
         var template = $('#property-template').html();
         var compiled = Handlebars.compile(template);
 
-        for (var i = 0; i < normalProp.length; i++) {
+        for (var i = 0; i < sponsoredProperties.length; i++) {
 
-          var property = normalProp[i];
+          var sponsoredProp = sponsoredProperties[i];
+          var sponsoredPropId = sponsoredProp.id;
 
-          var latProp = property.lat;
-          var lngProp = property.lng;
+          sponsorNum.push(sponsoredPropId);
 
-          var validDistance = getDistance(latInput,lngInput,latProp,lngProp) <= rad;
-
-          var propertyHTML = compiled(property);
-
-          if (validDistance) {
-
-            target.append(propertyHTML);
-          }
         }
 
+        for (var i = 0; i < normalProperties.length; i++) {
+
+          var normalProp = normalProperties[i];
+          var normalPropId = normalProp.id;
+          var latProp = normalProp.lat;
+          var lngProp = normalProp.lng;
+
+          var validDistance = getDistance(latInput,lngInput,latProp,lngProp) <= rad;
+          var propertyHTML = compiled(normalProp);
+
+          if (validDistance) {
+            if (sponsorNum.includes(normalPropId)) {
+
+              targetPromo.append(propertyHTML);
+
+            } else {
+              target.append(propertyHTML);
+            }
+
+          }
+
+        }
 
       },
       error: function (err) {

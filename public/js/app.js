@@ -35323,27 +35323,44 @@ function getDistance(lat1, lon1, lat2, lon2) {
 
 function searchProperties() {
   var latInput = $('#lat').val();
-  var lngInput = $('#lng').val(); // console.log(lat);
-  // console.log(lng);
-
+  var lngInput = $('#lng').val();
+  var rad = $("select#radius option:checked").val();
   $.ajax({
-    url: 'http://127.0.0.1:8000/api/reseach',
+    url: 'http://127.0.0.1:8000/api/search',
     method: 'GET',
     success: function success(properties) {
+      var sponsoredProperties = properties.sponsored;
+      var normalProperties = properties.normal;
+      var sponsorNum = [];
+      var targetPromo = $('#property-wall-promo');
+      targetPromo.html('');
+      var templatePromo = $('#property-template').html();
+      var compiled = Handlebars.compile(templatePromo);
       var target = $('#property-wall');
       target.html('');
       var template = $('#property-template').html();
       var compiled = Handlebars.compile(template);
 
-      for (var i = 0; i < properties.length; i++) {
-        var property = properties[i];
-        var latProp = property.lat;
-        var lngProp = property.lng;
-        var validDistance = getDistance(latInput, lngInput, latProp, lngProp) <= 20;
-        var propertyHTML = compiled(property);
+      for (var i = 0; i < sponsoredProperties.length; i++) {
+        var sponsoredProp = sponsoredProperties[i];
+        var sponsoredPropId = sponsoredProp.id;
+        sponsorNum.push(sponsoredPropId);
+      }
+
+      for (var i = 0; i < normalProperties.length; i++) {
+        var normalProp = normalProperties[i];
+        var normalPropId = normalProp.id;
+        var latProp = normalProp.lat;
+        var lngProp = normalProp.lng;
+        var validDistance = getDistance(latInput, lngInput, latProp, lngProp) <= rad;
+        var propertyHTML = compiled(normalProp);
 
         if (validDistance) {
-          target.append(propertyHTML);
+          if (sponsorNum.includes(normalPropId)) {
+            targetPromo.append(propertyHTML);
+          } else {
+            target.append(propertyHTML);
+          }
         }
       }
     },
@@ -35427,8 +35444,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/valeriotrinca/Desktop/BoolBnB 2/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/valeriotrinca/Desktop/BoolBnB 2/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/kobe24/Desktop/Boolean/BoolBnB/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/kobe24/Desktop/Boolean/BoolBnB/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -20,7 +20,7 @@ class PropertySeeder extends Seeder
             'city' => 'Milan',
             'address' => 'Via Larga',
             'lat' => 45.461727,
-            'lng' => 9.192712, 
+            'lng' => 9.192712,
             'm2' => 100,
             'floors' => 1,
             'beds' => 3,
@@ -55,7 +55,7 @@ class PropertySeeder extends Seeder
             'state' => 'Italy',
             'city' => 'Rome',
             'address' => 'Via del Corso',
-            'lat' => 41.903213, 
+            'lat' => 41.903213,
             'lng' => 12.479498,
             'm2' => 75,
             'floors' => 1,
@@ -73,7 +73,7 @@ class PropertySeeder extends Seeder
             'state' => 'Italy',
             'city' => 'Naples',
             'address' => 'Via Posillipo',
-            'lat' => 40.811611, 
+            'lat' => 40.811611,
             'lng' => 14.205786,
             'm2' => 100,
             'floors' => 1,
@@ -91,7 +91,7 @@ class PropertySeeder extends Seeder
             'state' => 'Italy',
             'city' => 'Naples',
             'address' => 'Via Firenze',
-            'lat' => 40.854010, 
+            'lat' => 40.854010,
             'lng' => 14.269197,
             'm2' => 100,
             'floors' => 1,
@@ -104,7 +104,7 @@ class PropertySeeder extends Seeder
             'img' => 'property.jpg'
         ]);
 
-        
+
 
     }
 }
