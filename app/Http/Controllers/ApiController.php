@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use App\Property;
 use App\Service;
+use App\Sponsorship;
 
 class ApiController extends Controller
 {
@@ -23,7 +24,6 @@ class ApiController extends Controller
     $sponsors = $request->input('sponsors');
 
     $queryProperty = Property::query();
-    $queryPropertySponsor = Property::query();
 
 
     if ($wifi == 'checked') {
@@ -70,11 +70,8 @@ class ApiController extends Controller
       $queryProperty->where('beds', ">=", $beds);
     }
 
-    if ($sponsors) {
-      $queryPropertySponsor->whereHas('sponsorships', function (Builder $query) {
-        $query->where('type_sponsorship_id', '>', '0');
-      });
-    }
+    $queryPropertySponsor = Sponsorship::where('end_date', '>', date("Y/m/d"));
+
 
     $prop = $queryProperty->get();
     $propPromo = $queryPropertySponsor->get();

@@ -15,7 +15,7 @@ class SponsorshipSeeder extends Seeder
      */
     public function run()
     {
-       
+
         factory(Sponsorship::class) -> times(1) -> create([
             'start_date' => '2020/10/20',
             'end_date' => '2020/10/30',
@@ -34,7 +34,7 @@ class SponsorshipSeeder extends Seeder
             'start_date' => '2020/10/20',
             'end_date' => '2020/10/30',
             'property_id' => 3,
-            'type_sponsorship_id' => 1
+            'type_sponsorship_id' => 2
         ]);
 
         factory(Sponsorship::class) -> times(1) -> create([
@@ -48,8 +48,8 @@ class SponsorshipSeeder extends Seeder
             'start_date' => '2020/10/20',
             'end_date' => '2020/10/30',
             'property_id' => 5,
-            'type_sponsorship_id' => 1
+            'type_sponsorship_id' => 2
         ]);
-        
+
     }
 }

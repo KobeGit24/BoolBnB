@@ -176,7 +176,11 @@
       </div>
     </div>
   </div>
-</main>
+  @if ($prop-> id == Auth::id() )
+
+    <a class="btn btn-danger" href="{{ route('prop.info', $prop -> id) }}">Vedi statistiche e messaggi</a>
+  @endif
+  </main>
 
 <script type="text/javascript">
 
