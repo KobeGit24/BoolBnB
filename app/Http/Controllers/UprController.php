@@ -163,8 +163,15 @@ class UprController extends Controller
 
         $property = Property::findOrFail($id);
         $services = Service::all();
+        
+        $property_services_db = Property_service::where('property_id', '=', $id) -> get();
+        $property_services = [];
 
-        return view('prop-edit', compact('property', 'services'));
+        foreach($property_services_db as $serv){
+            array_push($property_services, $serv -> service);
+        }
+
+        return view('prop-edit', compact('property', 'services', 'property_services'));
     }
 
     // Salva le modifiche della proprietà
@@ -184,6 +191,31 @@ class UprController extends Controller
         $data = $request -> all();
         $property_update = Property::findOrFail($data['id_property_edit']);
         $property_update -> update($data);
+
+        //Update servizi
+        $property_services = Property_service::where('property_id', '=', $property_update -> id) -> get();
+        //dd($property_services);
+        
+        foreach($property_services as $service){
+            $service -> delete();
+        }
+        
+        $services_db = Service::all();
+        $services_array = [];
+
+        foreach($services_db as $service){
+            array_push($services_array, $service -> name);
+        }
+        
+        foreach($services_array as $service){
+
+            if(array_key_exists($service, $data)){
+                $new_property_service = Property_service::create([
+                    'property_id' => $property_update -> id,
+                    'service_id' => $data[$service]
+                ]);
+            }
+        }
 
         // Redirect verso la dashboard
         return redirect() -> route('dashboard');

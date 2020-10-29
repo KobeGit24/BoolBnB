@@ -8,7 +8,7 @@
 </style>
 @section('content')
     <div id="central">
-
+        <h1> Edit Property </h1>
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -94,9 +94,19 @@
             {{-- Servizi --}}
             <div class="form-group">
                 
-                @foreach ($services as $service)
-                    <label for="{{$service -> name}}"> {{$service -> name}}: </label>
-                    <input type="checkbox" name="{{$service -> name}}" value="{{$service -> id}}">
+                {{-- Per ogni servizio controlla se è già presente. Se è presente lo stampa come cheched, altrimenti lo stampa vuoto --}}
+                 @foreach ($services as $service)
+                    
+                    @if (in_array($service, $property_services))
+                        <label for="{{$service -> name}}"> {{$service -> name}}: </label>
+                        <input type="checkbox" name="{{$service -> name}}" value="{{$service -> id}}" checked>
+
+                    @else
+                        <label for="{{$service -> name}}"> {{$service -> name}}: </label>
+                        <input type="checkbox" name="{{$service -> name}}" value="{{$service -> id}}">
+                    @endif
+
+                    
                 @endforeach
             </div>
 
