@@ -57,6 +57,7 @@ class PropertyController extends Controller
         'email' => ['string', 'max:255'],
         ]);
 
+        
         $data = $request -> all();
         
         $property = Property::findOrFail($id);

@@ -20,24 +20,12 @@ class GuestController extends Controller
         
         // Import data
         $data_sponsorship = Sponsorship::where('end_date', '>', date("Y/m/d")) -> take(N_ANNUNCI) -> get();
-        $data_property = Property::all();
+        $data_property = [];
 
-        // Array dati da restituire
-        $data_output = [];
-
-        // Se non è vuoto
-        if(count($data_sponsorship) > 0){
-            // Per ogni sponsorship estratta
-            foreach($data_sponsorship as $cosa){
-              array_push($data_output, $cosa -> property);
-            }
+        foreach($data_sponsorship as $spons){
+            array_push($data_property, $spons -> property);
         }
-
-        while( count($data_output) < N_ANNUNCI ){
-            $proprieta_random = Property::inRandomOrder() -> first();
-            array_push($data_output, $proprieta_random);
-        }
-
+       
         return view('home', compact('data_property'));
     }
 }

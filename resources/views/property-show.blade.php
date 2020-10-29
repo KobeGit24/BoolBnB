@@ -157,13 +157,16 @@
             @endif
 
             <form method="post" action="{{route('store.request', $prop -> id)}}" class="contact-owner d-flex flex-column justify-content-between">
+              @csrf
+              @method('POST')
+
               <h3>Contatta {{$prop -> name}}</h3>
               <input class="contact-email" type="email" name="user_email" value="" placeholder="la tua e-mail">
               <input type="text" name="firstname" placeholder="nome">
               <input type="text" name="lastname" placeholder="cognome">
               <input type="text" name="number" placeholder="cellulare">
               <textarea name="text" rows="5" cols="50" placeholder="Inserisci il tuo messaggio"></textarea>
-              <button class="contact-button" type="button" name="button">Invia Messaggio</button>
+              <button class="contact-button" type="submit" name="button">Invia Messaggio</button>
             </form>
 
           @endif
