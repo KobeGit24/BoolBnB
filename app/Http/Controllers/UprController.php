@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 use App\User;
 use App\Property;
@@ -32,202 +33,202 @@ use App\Property_views;
 class UprController extends Controller
 {
 
-    // Solo se autenticati
-    public function __construct()
-    {
-        $this->middleware('auth');
+  // Solo se autenticati
+  public function __construct()
+  {
+    $this->middleware('auth');
+  }
+
+  // Show Dashboard - restituisce le proprietà e le richieste assegnate ad un determinato utente
+  public function show()
+  {
+    $properties = Property::where('user_id', '=', Auth::id()) -> get();
+    return view('dashboard', compact('properties'));
+  }
+
+  // Form di aggiornamento utente
+  public function update(){
+    return view('upr-update');
+  }
+
+  // Store aggiornamento informazioni utente
+  public function store(Request $request){
+
+    // Validazione
+    $validateData = $request -> validate([
+        'firstname' => ['string', 'max:255'],
+        'lastname' => ['string', 'max:255'],
+        'email' => ['string', 'email', 'max:255'],
+        'password' => ['string', 'min:8'],
+        'date_of_birth' => ['date']
+    ]);
+
+    // Se nella request c`è un immagine allora la si imposta come profilo
+    if ($request -> file('image') ){
+
+        // Si ricava nome, estensione e percorso dell`immagine
+        $file = $request -> file('image');
+        $destinationPath = 'img_db/users/';
+        $name_image = date('YmdHis');
+        $profile_image = $name_image . '.' . $request -> image -> extension();
+        $file -> move($destinationPath, $profile_image);
+
+        // Si aggiorna il campo dell`usr
+        $current_usr = User::findOrFail(Auth::id());
+        $current_usr -> update(['img' => $profile_image]);
     }
 
-    // Show Dashboard - restituisce le proprietà e le richieste assegnate ad un determinato utente
-    public function show()
-    {
-        $properties = Property::where('user_id', '=', Auth::id()) -> get();
-        return view('dashboard', compact('properties'));
+    // Si aggiorano le altre informazioni, con hash password
+    $data = $request -> all();
+    $data['password'] = Hash::make($data['password']);
+
+    $usr = User::findOrFail(Auth::id());
+    $usr -> update($data);
+
+    return redirect() -> route('dashboard');
+  }
+
+  // Restituisce la view per creare una nuova proprietà
+  public function create(){
+      $services = Service::all();
+
+      return view('create-property', compact('services'));
+  }
+
+  // Salva la nuova proprietà
+  public function property_store(Request $request){
+
+    // Validazione
+    $validateData = $request -> validate([
+    'name' => ['required', 'string', 'max:255'],
+    'description' => ['required','string', 'max:255'],
+    'm2' => ['required', 'numeric'],
+    'floors' => ['required', 'numeric', 'min:1'],
+    'beds' => ['required','numeric', 'min:1'],
+    'bathrooms' => ['required','numeric', 'min:1'],
+    'full_address' => ['required']
+    ]);
+
+    $data = $request -> all();
+
+
+    // Se nella request c`è un immagine allora la si imposta
+    if ($request -> file('image') ){
+
+      // Si ricava nome, estensione e percorso dell`immagine
+      $file = $request -> file('image');
+      $destinationPath = 'img_db/properties/';
+      $name_image = date('YmdHis');
+      $profile_image = $name_image . '.' . $request -> image -> extension();
+      $file -> move($destinationPath, $profile_image);
+
+      $data['img'] = $profile_image;
+
     }
 
-    // Form di aggiornamento utente
-    public function update(){
-        return view('upr-update');
+    $new_property = Property::create($data);
+
+    // Salva i servizi associati alla nuova proprietà
+    $property_id = (Property::latest() -> first()) -> id;
+    $services_db = Service::all();
+    $services_array = [];
+
+    foreach($services_db as $service){
+        array_push($services_array, $service -> name);
     }
 
-    // Store aggiornamento informazioni utente
-    public function store(Request $request){
+    foreach($services_array as $service){
 
-        // Validazione
-        $validateData = $request -> validate([
-            'firstname' => ['string', 'max:255'],
-            'lastname' => ['string', 'max:255'],
-            'email' => ['string', 'email', 'max:255'],
-            'password' => ['string', 'min:8'],
-            'date_of_birth' => ['date']
+      if(array_key_exists($service, $data)){
+        $new_property_service = Property_service::create([
+          'property_id' => $property_id,
+          'service_id' => $data[$service]
         ]);
-
-        // Se nella request c`è un immagine allora la si imposta come profilo
-        if ($request -> file('image') ){
-
-            // Si ricava nome, estensione e percorso dell`immagine
-            $file = $request -> file('image');
-            $destinationPath = 'img_db/users/';
-            $name_image = date('YmdHis');
-            $profile_image = $name_image . '.' . $request -> image -> extension();
-            $file -> move($destinationPath, $profile_image);
-
-            // Si aggiorna il campo dell`usr
-            $current_usr = User::findOrFail(Auth::id());
-            $current_usr -> update(['img' => $profile_image]);
-        }
-
-        // Si aggiorano le altre informazioni, con hash password
-        $data = $request -> all();
-        $data['password'] = Hash::make($data['password']);
-
-        $usr = User::findOrFail(Auth::id());
-        $usr -> update($data);
-
-        return redirect() -> route('dashboard');
+      }
     }
 
-    // Restituisce la view per creare una nuova proprietà
-    public function create(){
-        $services = Service::all();
+    // Redirect verso la home
+    return redirect() -> route('dashboard');
+  }
 
-        return view('create-property', compact('services'));
+// Rende non visibile una determinata proprietà
+  public function delete($id){
+    $property = Property::findOrFail($id);
+
+    $property -> update(['deleted' => 1]);
+    return redirect() -> route('dashboard');
+  }
+
+  // Restituisce la view per modificare una proprietà
+  public function property_edit($id){
+
+    $property = Property::findOrFail($id);
+    $services = Service::all();
+
+    $property_services_db = Property_service::where('property_id', '=', $id) -> get();
+    $property_services = [];
+
+    foreach($property_services_db as $serv){
+        array_push($property_services, $serv -> service);
     }
 
-    // Salva la nuova proprietà
-    public function property_store(Request $request){
+    return view('prop-edit', compact('property', 'services', 'property_services'));
+  }
 
-        // Validazione
-        $validateData = $request -> validate([
-        'name' => ['required', 'string', 'max:255'],
-        'description' => ['required','string', 'max:255'],
-        'm2' => ['required', 'numeric'],
-        'floors' => ['required', 'numeric', 'min:1'],
-        'beds' => ['required','numeric', 'min:1'],
-        'bathrooms' => ['required','numeric', 'min:1'],
-        'full_address' => ['required']
+  // Salva le modifiche della proprietà
+  public function property_edit_store(Request $request){
+
+    // Validazione
+    $validateData = $request -> validate([
+      'name' => ['required', 'string', 'max:255'],
+      'description' => ['required','string', 'max:255'],
+      'm2' => ['required', 'numeric'],
+      'floors' => ['required', 'numeric', 'min:1'],
+      'beds' => ['required','numeric', 'min:1'],
+      'bathrooms' => ['required','numeric', 'min:1'],
+      'full_address' => ['required']
+    ]);
+
+    $data = $request -> all();
+    $property_update = Property::findOrFail($data['id_property_edit']);
+    $property_update -> update($data);
+
+    //Update servizi
+    $property_services = Property_service::where('property_id', '=', $property_update -> id) -> get();
+    //dd($property_services);
+
+    foreach($property_services as $service){
+        $service -> delete();
+    }
+
+    $services_db = Service::all();
+    $services_array = [];
+
+    foreach($services_db as $service){
+        array_push($services_array, $service -> name);
+    }
+
+    foreach($services_array as $service){
+
+      if(array_key_exists($service, $data)){
+        $new_property_service = Property_service::create([
+          'property_id' => $property_update -> id,
+          'service_id' => $data[$service]
         ]);
-
-        $data = $request -> all();
-
-
-        // Se nella request c`è un immagine allora la si imposta
-        if ($request -> file('image') ){
-
-            // Si ricava nome, estensione e percorso dell`immagine
-            $file = $request -> file('image');
-            $destinationPath = 'img_db/properties/';
-            $name_image = date('YmdHis');
-            $profile_image = $name_image . '.' . $request -> image -> extension();
-            $file -> move($destinationPath, $profile_image);
-
-            $data['img'] = $profile_image;
-
-        }
-
-        $new_property = Property::create($data);
-
-        // Salva i servizi associati alla nuova proprietà
-        $property_id = (Property::latest() -> first()) -> id;
-        $services_db = Service::all();
-        $services_array = [];
-
-        foreach($services_db as $service){
-            array_push($services_array, $service -> name);
-        }
-
-        foreach($services_array as $service){
-
-            if(array_key_exists($service, $data)){
-                $new_property_service = Property_service::create([
-                    'property_id' => $property_id,
-                    'service_id' => $data[$service]
-                ]);
-            }
-        }
-
-        // Redirect verso la home
-        return redirect() -> route('dashboard');
+      }
     }
 
-    // Rende non visibile una determinata proprietà
-    public function delete($id){
-        $property = Property::findOrFail($id);
+    // Redirect verso la dashboard
+    return redirect() -> route('dashboard');
+  }
 
-        $property -> update(['deleted' => 1]);
-        return redirect() -> route('dashboard');
-    }
+  // Restituisce le requests e le views di una determinata proprietà, lo può visualizzare solo il proprietario dell`annuncio
+  public function get_info($id){
+    $requests = Property_Request::where('user_id', '=', Auth::id()) -> get();
+    $views = Property_views::where('property_id', '=', $id) -> get();
+    $viewsNumber = count($views);
 
-    // Restituisce la view per modificare una proprietà
-    public function property_edit($id){
+    return view('prop-info', compact('requests', 'views', 'viewsNumber'));
+  }
 
-        $property = Property::findOrFail($id);
-        $services = Service::all();
-        
-        $property_services_db = Property_service::where('property_id', '=', $id) -> get();
-        $property_services = [];
-
-        foreach($property_services_db as $serv){
-            array_push($property_services, $serv -> service);
-        }
-
-        return view('prop-edit', compact('property', 'services', 'property_services'));
-    }
-
-    // Salva le modifiche della proprietà
-    public function property_edit_store(Request $request){
-
-        // Validazione
-        $validateData = $request -> validate([
-            'name' => ['required', 'string', 'max:255'],
-            'description' => ['required','string', 'max:255'],
-            'm2' => ['required', 'numeric'],
-            'floors' => ['required', 'numeric', 'min:1'],
-            'beds' => ['required','numeric', 'min:1'],
-            'bathrooms' => ['required','numeric', 'min:1'],
-            'full_address' => ['required']
-        ]);
-
-        $data = $request -> all();
-        $property_update = Property::findOrFail($data['id_property_edit']);
-        $property_update -> update($data);
-
-        //Update servizi
-        $property_services = Property_service::where('property_id', '=', $property_update -> id) -> get();
-        //dd($property_services);
-        
-        foreach($property_services as $service){
-            $service -> delete();
-        }
-        
-        $services_db = Service::all();
-        $services_array = [];
-
-        foreach($services_db as $service){
-            array_push($services_array, $service -> name);
-        }
-        
-        foreach($services_array as $service){
-
-            if(array_key_exists($service, $data)){
-                $new_property_service = Property_service::create([
-                    'property_id' => $property_update -> id,
-                    'service_id' => $data[$service]
-                ]);
-            }
-        }
-
-        // Redirect verso la dashboard
-        return redirect() -> route('dashboard');
-    }
-
-    // Restituisce le requests e le views di una determinata proprietà, lo può visualizzare solo il proprietario dell`annuncio
-    public function get_info($id){
-      $requests = Property_Request::where('user_id', '=', Auth::id()) -> get();
-      $views = Property_views::where('property_id', '=', $id) -> get();
-      $viewsNumber = count($views);
-
-
-      return view('prop-info', compact('requests', 'views', 'viewsNumber'));
-    }
 }
