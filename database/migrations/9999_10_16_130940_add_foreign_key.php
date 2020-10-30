@@ -26,13 +26,7 @@ class AddForeignKey extends Migration
                  -> on('users');
         });
 
-        // Per ogni immagine proprietà c'è una sola proprietà
-        Schema::table('property_img', function (Blueprint $table) {
-            $table -> foreign('property_id', 'prop_img-prop') 
-                 -> onDelete('cascade')
-                 -> references('id') 
-                 -> on('properties');
-        });
+        
 
         // Per ogni visualizzazione c'è una sola proprietà 
         Schema::table('property_views', function (Blueprint $table) {
@@ -97,10 +91,7 @@ class AddForeignKey extends Migration
             $table -> dropForeign('usr-prop');
         });
 
-        Schema::table('property_img', function (Blueprint $table) {
-            $table -> dropForeign('prop_img-prop');
-        });
-
+        
 
         Schema::table('property_views', function (Blueprint $table) {
             $table -> dropForeign('prop_views-prop');

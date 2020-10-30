@@ -45,3 +45,7 @@ Route::get('/property/{id}', 'PropertyController@show' )-> name('prop.show');
 Route::get('/search','PropertyController@search')->name('search');
 Route::get('/api/reseach','ApiController@apiResearch');
 Route::post('/property/{id}/store-request', 'PropertyController@store_request') -> name('store.request');
+
+//Route::get(‘/payment/make’, ‘PaymentsController@make’)->name(‘payment.make’);
+Route::get('/property/{id}/payment', 'PaymentController@index') -> name('payment.view');
+Route::post('/property/{id}/payment/payment-store', 'PaymentController@payment') -> name('payment.store');

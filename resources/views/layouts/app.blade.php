@@ -42,6 +42,9 @@
 
     <!-- Handlebars -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js" charset="utf-8"></script>
+
+    <!-- Braintree pagamenti -->
+    <script src="https://js.braintreegateway.com/web/dropin/1.25.0/js/dropin.min.js"></script>
 </head>
 <body>
     <div id="app">
