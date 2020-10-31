@@ -179,7 +179,7 @@
       </div>
     </div>
   </div>
-  @if ($prop-> id == Auth::id() )
+  @if ($prop-> user_id == Auth::id() )
 
     <a class="btn btn-danger" href="{{ route('prop.info', $prop -> id) }}">Vedi statistiche e messaggi</a>
     <a class="btn btn-danger" href="{{ route('payment.view', $prop -> id) }}"> Sponsorizza </a>
