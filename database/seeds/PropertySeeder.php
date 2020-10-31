@@ -14,6 +14,9 @@ class PropertySeeder extends Seeder
      */
     public function run()
     {
+        // ===============================     Proprieta Milano
+
+        // Appartamento 1
         factory(Property::class) -> times(1) -> create([
             'name' => 'Appartamento Milano centro',
             'state' => 'Italy',
@@ -23,86 +26,75 @@ class PropertySeeder extends Seeder
             'lng' => 9.192712,
             'm2' => 100,
             'floors' => 1,
-            'beds' => 3,
+            'beds' => 2,
             'bathrooms' => 1,
             'available' => 0,
             'description' => 'Grazioso appartamento in centro a Milano',
             'deleted' => 0,
             'user_id' => 1,
-            'img' => 'property.jpg'
+            'img' => 'milano1.jpg'
         ]);
 
+        // Appartamento 2
         factory(Property::class) -> times(1) -> create([
-            'name' => 'Villa alle porte di Roma',
+            'name' => 'BNB Milano',
             'state' => 'Italy',
-            'city' => 'Rome',
-            'address' => 'Via Appia',
-            'lat' => 41.844976,
-            'lng' => 12.551489,
-            'm2' => 400,
-            'floors' => 3,
-            'beds' => 5,
-            'bathrooms' => 3,
+            'city' => 'Milan',
+            'address' => 'Via Senato',
+            'lat' => 45.469675,
+            'lng' => 9.198350,
+            'm2' => 200,
+            'floors' => 2,
+            'beds' => 3,
+            'bathrooms' => 2,
             'available' => 0,
-            'description' => 'Villa storica alle porte di Roma, circondata dalla natura',
+            'description' => 'Casa spaziosa in pieno centro a Milano, vicino alla metro e molti altri servizi',
             'deleted' => 0,
-            'user_id' => 2,
-            'img' => 'property.jpg'
+            'user_id' => 1,
+            'img' => 'milano2.jpg'
         ]);
 
+        // Appartamento 3
         factory(Property::class) -> times(1) -> create([
-            'name' => 'Grazioso appartamento in centro Roma',
+            'name' => 'Appartamento vicino alla stazione centrale',
             'state' => 'Italy',
-            'city' => 'Rome',
-            'address' => 'Via del Corso',
-            'lat' => 41.903213,
-            'lng' => 12.479498,
-            'm2' => 75,
-            'floors' => 1,
-            'beds' => 2,
+            'city' => 'Milan',
+            'address' => 'Via Vitruvio',
+            'lat' => 45.483112,
+            'lng' => 9.205293,
+            'm2' => 60,
+            'floors' => 4,
+            'beds' => 1,
             'bathrooms' => 1,
             'available' => 0,
-            'description' => 'Appartamento centralissimo a Roma, via del corso',
+            'description' => 'Appartamento vicino alla stazione Centrale Milano, ottimo per lavoratori',
             'deleted' => 0,
-            'user_id' => 2,
-            'img' => 'property.jpg'
+            'user_id' => 1,
+            'img' => 'milano3.jpg'
         ]);
 
+        // ===============================     Proprieta Torino
+
+        // Appartamento 3
         factory(Property::class) -> times(1) -> create([
-            'name' => 'Attico panoramico Napoli',
+            'name' => 'Appartamento vicino alla stazione centrale',
             'state' => 'Italy',
-            'city' => 'Naples',
-            'address' => 'Via Posillipo',
-            'lat' => 40.811611,
-            'lng' => 14.205786,
-            'm2' => 100,
-            'floors' => 1,
-            'beds' => 2,
-            'bathrooms' => 2,
+            'city' => 'Milan',
+            'address' => 'Via Vitruvio',
+            'lat' => 45.483112,
+            'lng' => 9.205293,
+            'm2' => 60,
+            'floors' => 4,
+            'beds' => 1,
+            'bathrooms' => 1,
             'available' => 0,
-            'description' => 'Attico panoraico alle porte di Napoli, vista mare',
+            'description' => 'Appartamento vicino alla stazione Centrale Milano, ottimo per lavoratori',
             'deleted' => 0,
-            'user_id' => 3,
-            'img' => 'property.jpg'
+            'user_id' => 1,
+            'img' => 'milano3.jpg'
         ]);
 
-        factory(Property::class) -> times(1) -> create([
-            'name' => 'Monolocale in centro',
-            'state' => 'Italy',
-            'city' => 'Naples',
-            'address' => 'Via Firenze',
-            'lat' => 40.854010,
-            'lng' => 14.269197,
-            'm2' => 100,
-            'floors' => 1,
-            'beds' => 2,
-            'bathrooms' => 2,
-            'available' => 0,
-            'description' => 'Appartamento appena ristrutturato, Napoli centrale',
-            'deleted' => 0,
-            'user_id' => 3,
-            'img' => 'property.jpg'
-        ]);
+       
 
 
 
