@@ -1,32 +1,36 @@
 @extends('layouts.app')
 @section('content')
 
-  <div style="margin-top: 200px;" class="d-flex flex-row">
-    <form class="container" action="" method="post" enctype="multipart/form-data">
-      <div class="form-group d-flex flex-row align-items-center">
-        <div class="aa-input-container" id="aa-input-container">
+  <div class="search-container d-flex align-items-center">
+    <div class="search-content d-flex justify-content-between">
+      <form class="form-search-container d-flex flex-column justify-content-start" action="" method="post" enctype="multipart/form-data">
+        <div class="aa-input-container d-flex justify-content-between" id="aa-input-container">
           <input  type="search" id="aa-search-input"
-                  class="aa-input-search"
-                  placeholder="Search for players or teams..."
-                  name="search"
-                  value="{{ $requestInput['search'] }}"
-                  autocomplete="off" />
+          class="aa-input-search"
+          placeholder="Search for players or teams..."
+          name="search"
+          value="{{ $requestInput['search'] }}"
+          autocomplete="off" />
           <input  id="lat"
-                  type="hidden"
-                  name="lat"
-                  value="{{ $requestInput['lat'] }}"
-                  class="form-control">
+          type="hidden"
+          name="lat"
+          value="{{ $requestInput['lat'] }}"
+          class="form-control">
           <input  id="lng"
-                  type="hidden"
-                  name="lng"
-                  value="{{ $requestInput['lng'] }}"
-                  class="form-control">
+          type="hidden"
+          name="lng"
+          value="{{ $requestInput['lng'] }}"
+          class="form-control">
+
         </div>
+
+        <button type="submit" class="">CERCA</button>
+
         {{-- SEZIONE FILTRI --}}
-        <ul id="filters" style="margin-left: 100px;"  class="list-group list-group">
-          <h4>Filtri di ricerca</h4>
+        <ul id="filters" class="">
+          <h4>Filtri di ricerca:</h4>
           <!-- Filtro Distanza -->
-          <li class="list-group-item">
+          <li class="">
             <label for="radius">Distanza:</label>
             <select id="radius" class="" name="radius">
               <option value="20">20km</option>
@@ -35,62 +39,60 @@
             </select>
           </li>
           <!-- Filtro Stanze -->
-          <li class="list-group-item">
+          <li class="">
             <label for="floors"> Floors: </label>
             <input id="floors" min="1" max="10" type="number" name="floors" value="">
           </li>
           <!-- Filtro Letti -->
-          <li class="list-group-item">
+          <li class="">
             <label for="beds"> Beds: </label>
             <input id="beds" min="1" max="10" type="number" name="beds" value="">
-          </li class="list-group-item">
+          </li>
           <!-- Filtro Wi-fi -->
-          <li class="list-group-item">
-            <label for="wifi">Wi-fi</label>
+          <li class="">
             <input id="wifi" type="checkbox" name="wifi" value="">
+            <label for="wifi">Wi-fi</label>
           </li>
           <!-- Filtro Parking -->
-          <li class="list-group-item">
-            <label for="parking">Parking</label>
+          <li class="">
             <input id="parking" type="checkbox" name="parking" value="">
+            <label for="parking">Parking</label>
           </li>
           <!-- Filtro Sauna -->
-          <li class="list-group-item">
-            <label for="sauna">Sauna</label>
+          <li class="">
             <input id="sauna" type="checkbox" name="sauna" value="">
+            <label for="sauna">Sauna</label>
           </li>
           <!-- Filtro Pool -->
-          <li class="list-group-item">
-            <label for="pool">Pool</label>
+          <li class="">
             <input id="pool" type="checkbox" name="pool" value="">
+            <label for="pool">Pool</label>
           </li>
           <!-- Filtro Concierge -->
-          <li class="list-group-item">
-            <label for="concierge">Concierge</label>
+          <li class="">
             <input id="concierge" type="checkbox" name="concierge" value="">
+            <label for="concierge">Concierge</label>
           </li>
           <!-- Filtro Sea View -->
-          <li class="list-group-item">
-            <label for="seaView">Sea View</label>
+          <li class="">
             <input id="seaView" type="checkbox" name="seaView" value="">
+            <label for="seaView">Sea View</label>
           </li>
         </ul>
         {{-- FINE SEZIONE FILTRI  --}}
+      </form>
+
+      <div class="property-search-container d-flex flex-row">
+
+        <ul id="property-wall-promo" class="property-wall-promo">
+
+        </ul>
+
+        <ul id="property-wall" class="property-wall">
+
+        </ul>
       </div>
-      <button type="submit" class="btn btn-primary">CERCA</button>
-    </form>
-  </div>
-
-  <div style="margin-top: 100px;" class="d-flex flex-row bg-light">
-
-    <ul id="property-wall-promo" class="list-group list-group-horizontal bg-danger">
-
-    </ul>
-
-    <ul id="property-wall" class="list-group list-group-horizontal bg-success">
-
-    </ul>
-
+    </div>
   </div>
 
 
@@ -98,16 +100,17 @@
 
 
   <script id="property-template" type="text/x-handlebars-template">
-    <div class="card my-3" style="width: 18rem;">
-      <div class="card-body d-flex flex-column">
-        <h5 class="card-title text-center">@{{ name }}</h5>
-        <p class="card-text">@{{ description }}</p>
-        <p class="card-text">@{{ address }}</p>
-        <p class="card-text">Metri Quadri: @{{ m2 }}</p>
-        <p class="card-text">Piani: @{{ floors }}</p>
-        <p class="card-text">Bagni: @{{ bathrooms }}</p>
-        <p class="card-text">Letti: @{{ beds }}</p>
-        <a href="/property/@{{ id }}" class="btn btn-primary align-self-center">SCEGLI</a>
+    <div class="property-search d-flex justify-content-between align-items-center">
+      <img src="img_db/properties/property.jpg" alt="">
+      <div class="property-search-text d-flex flex-column justify-content-between align-items-start">
+        <h5 class="text-center">@{{ name }}</h5>
+        <p>@{{ description }}</p>
+        <p>@{{ address }}</p>
+        <p>Metri Quadri: @{{ m2 }}</p>
+        <p>Piani: @{{ floors }}</p>
+        <p>Bagni: @{{ bathrooms }}</p>
+        <p>Letti: @{{ beds }}</p>
+        <a href="/property/@{{ id }}" class="btn align-self-center">MOSTRA</a>
       </div>
     </div>
   </script>
