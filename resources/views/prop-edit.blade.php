@@ -41,24 +41,24 @@
                 <input type = "textarea" name="description" value="{{$property -> description}}">
             </div>
 
-            
+
             {{-- M2 --}}
             <div class="form-group">
                 <label for="m2"> m2 </label>
                 <input type = "number" name="m2" value="{{$property -> m2}}">
             </div>
-            
+
             {{-- Piani --}}
             <div class="form-group">
                 <label for="floors"> Floors </label>
                 <input type = "number" name="floors" value="{{$property -> floors}}">
             </div>
-            
+
             <div class="form-group">
                 <label for="beds"> Beds </label>
                 <input type = "number" name="beds" value="{{$property -> beds}}">
             </div>
-            
+
             <div class="form-group">
                 <label for="bathrooms">Bathrooms </label>
                 <input type = "number" name="bathrooms" value="{{$property -> bathrooms}}">
@@ -72,13 +72,13 @@
             {{-- NASCOSTI --}}
             {{-- Lat --}}
             <input type = "hidden" name="lat" id="lat" value="{{$property -> lat}}">
-            
+
             {{-- Lng --}}
             <input type = "hidden" name="lng" id="lng" value="{{$property -> lng}}">
-            
+
             {{-- UserID --}}
             <input type = "hidden" name="user_id" value="{{Auth::id()}}">
-            
+
             {{-- State --}}
             <input type="hidden" name="state" id="state" value="{{$property -> state}}">
 
@@ -93,10 +93,10 @@
 
             {{-- Servizi --}}
             <div class="form-group">
-                
+
                 {{-- Per ogni servizio controlla se è già presente. Se è presente lo stampa come cheched, altrimenti lo stampa vuoto --}}
                  @foreach ($services as $service)
-                    
+
                     @if (in_array($service, $property_services))
                         <label for="{{$service -> name}}"> {{$service -> name}}: </label>
                         <input type="checkbox" name="{{$service -> name}}" value="{{$service -> id}}" checked>
@@ -106,7 +106,7 @@
                         <input type="checkbox" name="{{$service -> name}}" value="{{$service -> id}}">
                     @endif
 
-                    
+
                 @endforeach
             </div>
 
