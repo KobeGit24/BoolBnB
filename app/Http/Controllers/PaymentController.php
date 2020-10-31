@@ -65,7 +65,7 @@ class PaymentController extends Controller
         if($result){
 
             $date_now = date_create( date("Y/m/d") );
-            
+            //dd($date_now);
             if($sponsorship_choose -> name == 'h24'){
                 $end_date = date_add($date_now,date_interval_create_from_date_string("1 days"));
             }
@@ -78,8 +78,9 @@ class PaymentController extends Controller
                 $end_date = date_add($date_now,date_interval_create_from_date_string("6 days"));
             }
 
+            //dd($end_date);
             $new_sponsorship = Sponsorship::create([
-                'start_date' => $date_now,
+                'start_date' => date("Y/m/d"),
                 'end_date' => $end_date,
                 'property_id' => $request -> property_id,
                 'type_sponsorship_id' => $sponsorship_choose -> id 

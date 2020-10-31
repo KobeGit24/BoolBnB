@@ -27,11 +27,15 @@ class PropertyController extends Controller
         $prop = Property::findOrFail($id);
         $services = Property_service::all();
 
-        // Salva la visualizzazione
-        $new_view = Property_views::create([
-            'date' => date("Y-m-d H:i:s"),
-            'property_id' => $prop -> id
-        ]);
+        // Se l'utente che lo vede non è il proprietario
+        if(Auth::id() != $prop -> user_id){
+
+            // Salva la visualizzazione
+            $new_view = Property_views::create([
+                'date' => date("Y-m-d H:i:s"),
+                'property_id' => $prop -> id
+            ]);
+        }
 
         return view('property-show', compact('prop', 'services'));
     }
