@@ -25,7 +25,7 @@ class GuestController extends Controller
         foreach($data_sponsorship as $spons){
             array_push($data_property, $spons -> property);
         }
-        dd($data_property);
+        
         return view('home', compact('data_property'));
     }
 }
