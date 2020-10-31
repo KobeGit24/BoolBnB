@@ -11219,6 +11219,32 @@ main {
   }
 }
 
+#edit-property {
+  margin-top: 115px;
+  padding-bottom: 20px;
+}
+
+#edit-property .input-title-text {
+  color: red;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+  text-shadow: 3px 0px 3px rgba(0, 0, 0, 0.38);
+}
+
+#edit-property .card-shadow {
+  box-shadow: 10px 10px 5px -2px rgba(0, 0, 0, 0.44);
+}
+
+#edit-property .input-text {
+  font-weight: bold;
+}
+
+#edit-property .btn-card {
+  font-weight: bold;
+  box-shadow: 8px 8px 5px -2px rgba(0, 0, 0, 0.44);
+}
+
 body {
   font-family: "Roboto", sans-serif;
 }

@@ -1,119 +1,148 @@
 @extends('layouts.app')
 
-<style>
-    #central{
-        margin-top: 200px;
-        padding: 10px;
-    }
-</style>
 @section('content')
-    <div id="central">
-        <h1> Edit Property </h1>
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
+  <div class="container">
+    <div id="edit-property" class="row justify-content-center">
+      <div class="col-md-8">
+
+        <div class="card card-shadow">
+          <div class="card-header input-title-text text-center">{{ __('Modifica Dati proprietà') }}
+          </div>
+            <div class="card-body">
+              @if ($errors->any())
+                  <div class="alert alert-danger">
+                      <ul>
+                          @foreach ($errors->all() as $error)
+                              <li>{{ $error }}</li>
+                          @endforeach
+                      </ul>
+                  </div>
+              @endif
+
+              <form method="post" action="{{route('prop.edit.store', $property -> id)}}" enctype="multipart/form-data">
+                @csrf
+                @method('POST')
+
+                {{-- Nome proprieta --}}
+                <div class="form-group row">
+                    <label for="name" class="col-md-4 col-form-label text-md-right input-text">{{ __('Name') }}</label>
+
+                    <div class="col-md-6">
+                      <input class="form-control" type = "text" name="name" value="{{$property -> name}}" required autocomplete="name" autofocus>
+                    </div>
+                </div>
+
+                {{-- Indirizzo --}}
+                <div class="form-group row">
+                    <label for="address" class="col-md-4 col-form-label text-md-right input-text">{{ __('Full Address') }}</label>
+                    <div class="col-md-6">
+                      <input class="form-control" type = "text" name='full_address' id="address" value="{{$property -> state}}, {{$property ->city}},{{$property -> address}}" required autocomplete="full_address" autofocus>
+                    </div>
+                </div>
+
+                {{-- Descrizione --}}
+                <div class="form-group row">
+                    <label for="description" class="col-md-4 col-form-label text-md-right input-text">{{ __('Description') }}</label>
+                    <div class="col-md-6">
+                      <input class="form-control" type = "text" name="description" value="{{$property -> description}}" required autocomplete="description" autofocus>
+                    </div>
+                </div>
+
+
+                {{-- M2 --}}
+                <div class="form-group row">
+                    <label for="m2" class="col-md-4 col-form-label text-md-right input-text"> {{ __('m2') }} </label>
+                    <div class="col-md-6">
+
+                      <input class="form-control" type ="number" name="m2" value="{{$property -> m2}}" required autocomplete="m2" autofocus>
+                    </div>
+                </div>
+
+                {{-- Piani --}}
+                <div class="form-group row">
+                    <label for="floors" class="col-md-4 col-form-label text-md-right input-text"> {{ __('Floors') }} </label>
+                    <div class="col-md-6">
+
+                      <input class="form-control" type = "number" name="floors" value="{{$property -> floors}}" required autocomplete="floors" autofocus>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="beds" class="col-md-4 col-form-label text-md-right input-text"> {{ __('Beds') }} </label>
+                    <div class="col-md-6">
+
+                      <input class="form-control" type = "number" name="beds" value="{{$property -> beds}}" required autocomplete="beds" autofocus>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="bathrooms" class="col-md-4 col-form-label text-md-right input-text">{{ __('Bathrooms') }} </label>
+                    <div class="col-md-6">
+
+                      <input class="form-control" type = "number" name="bathrooms"value="{{$property -> bathrooms}}" required autocomplete="bathrooms" autofocus>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="image" class="col-md-4 col-form-label text-md-right input-text">{{ __('Property Image') }} </label>
+                    <div class="col-md-6">
+
+                      <input type="file" name="image" required autocomplete="image" autofocus>
+                    </div>
+                </div>
+
+                {{-- NASCOSTI --}}
+                {{-- Lat --}}
+                <input type = "hidden" name="lat" id="lat"value="{{$property -> lat}}">
+
+                {{-- Lng --}}
+                <input type = "hidden" name="lng" id="lng"value="{{$property -> lng}}">
+
+                {{-- UserID --}}
+                <input type = "hidden" name="user_id" value="{{Auth::id()}}">
+
+                {{-- State --}}
+                <input type="hidden" name="state" id="state" value="{{$property -> state}}">
+
+                {{-- City --}}
+                <input type="hidden" name="city" id="city" value="{{$property -> city}}">
+
+                {{-- Address --}}
+                <input type="hidden" name="address" id="t_address"value="{{$property -> address}}">
+
+                {{-- ID Property --}}
+                <input type="hidden" name="id_property_edit" value="{{$property -> id}}">
+
+                {{-- Servizi --}}
+                <div class="form-group d-flex flex-md-row flex-lg-row flex-xl-row flex-sm-column justify-content-sm-start justify-content-md-around align-items-center">
+
+                    {{-- Per ogni servizio controlla se è già presente. Seèpresente lo stampa come cheched, altrimenti lostampavuoto --}}
+                     @foreach ($services as $service)
+
+                        @if (in_array($service, $property_services))
+                            <label for="{{$service -> name}}" class="input-text"> {{$service -> name}} </label>
+                            <input class="" type="checkbox" name="{{$service -> name}}" value="{{$service -> id}}" checked required autocomplete="image" autofocus>
+
+                        @else
+                            <label for="{{$service -> name}}" class="input-text"> {{$service -> name}} </label>
+                            <input class="" type="checkbox" name="{{$service -> name}}" value="{{$service -> id}}" required autocomplete="image" autofocus>
+                        @endif
+
+
                     @endforeach
-                </ul>
+                </div>
+                <div class="d-flex justify-content-center">
+
+                  <button type="submit" class="btn btn-warning align-self-center p-3 btn-card"> Edit </button>
+                </div>
+
+              </form>
             </div>
-        @endif
-
-        <form method="post" action="{{route('prop.edit.store', $property -> id)}}" enctype="multipart/form-data">
-            @csrf
-            @method('POST')
-
-            {{-- Nome proprieta --}}
-            <div class="form-group">
-                <label for="name"> Name </label>
-                <input type = "text" name="name" value="{{$property -> name}}">
-            </div>
-
-            {{-- Indirizzo --}}
-            <div class="form-group">
-                <label for="address">Full Address </label>
-                <input type = "text" name='full_address' id="address" value="{{$property -> state}}, {{$property -> city}}, {{$property -> address}}">
-            </div>
-
-            {{-- Descrizione --}}
-            <div class="form-group">
-                <label for="description"> Description </label>
-                <input type = "textarea" name="description" value="{{$property -> description}}">
-            </div>
-
-
-            {{-- M2 --}}
-            <div class="form-group">
-                <label for="m2"> m2 </label>
-                <input type = "number" name="m2" value="{{$property -> m2}}">
-            </div>
-
-            {{-- Piani --}}
-            <div class="form-group">
-                <label for="floors"> Floors </label>
-                <input type = "number" name="floors" value="{{$property -> floors}}">
-            </div>
-
-            <div class="form-group">
-                <label for="beds"> Beds </label>
-                <input type = "number" name="beds" value="{{$property -> beds}}">
-            </div>
-
-            <div class="form-group">
-                <label for="bathrooms">Bathrooms </label>
-                <input type = "number" name="bathrooms" value="{{$property -> bathrooms}}">
-            </div>
-
-            <div class="form-group">
-                <label for="image"> Property image: </label>
-                <input type="file" name="image">
-            </div>
-
-            {{-- NASCOSTI --}}
-            {{-- Lat --}}
-            <input type = "hidden" name="lat" id="lat" value="{{$property -> lat}}">
-
-            {{-- Lng --}}
-            <input type = "hidden" name="lng" id="lng" value="{{$property -> lng}}">
-
-            {{-- UserID --}}
-            <input type = "hidden" name="user_id" value="{{Auth::id()}}">
-
-            {{-- State --}}
-            <input type="hidden" name="state" id="state" value="{{$property -> state}}">
-
-            {{-- City --}}
-            <input type="hidden" name="city" id="city" value="{{$property -> city}}">
-
-            {{-- Address --}}
-            <input type="hidden" name="address" id="t_address" value="{{$property -> address}}">
-
-            {{-- ID Property --}}
-            <input type="hidden" name="id_property_edit" value="{{$property -> id}}">
-
-            {{-- Servizi --}}
-            <div class="form-group">
-
-                {{-- Per ogni servizio controlla se è già presente. Se è presente lo stampa come cheched, altrimenti lo stampa vuoto --}}
-                 @foreach ($services as $service)
-
-                    @if (in_array($service, $property_services))
-                        <label for="{{$service -> name}}"> {{$service -> name}}: </label>
-                        <input type="checkbox" name="{{$service -> name}}" value="{{$service -> id}}" checked>
-
-                    @else
-                        <label for="{{$service -> name}}"> {{$service -> name}}: </label>
-                        <input type="checkbox" name="{{$service -> name}}" value="{{$service -> id}}">
-                    @endif
-
-
-                @endforeach
-            </div>
-
-            <button type="submit" class="btn btn-danger"> Edit </button>
-
-        </form>
+        </div>
+      </div>
     </div>
+  </div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
     <script>
