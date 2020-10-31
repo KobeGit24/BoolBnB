@@ -19,6 +19,10 @@
 
 @import 'main-property.scss';
 
+
+@import 'main-search.scss';
+
+
 // Auth
 
 @import 'register.scss';
@@ -30,6 +34,7 @@
 // Edit Property
 
 @import 'edit-property.scss';
+
 
 body{
   font-family: 'Roboto', sans-serif;
