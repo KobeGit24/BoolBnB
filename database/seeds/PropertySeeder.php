@@ -291,7 +291,7 @@ class PropertySeeder extends Seeder
             'description' => 'Villa con Piscina nei pressi Bari',
             'deleted' => 0,
             'user_id' => 7,
-            'img' => 'bari1.jpg'
+            'img' => 'bari.jpg'
         ]);
 
          // ===============================     Proprieta Bologna

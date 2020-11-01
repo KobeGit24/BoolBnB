@@ -56,10 +56,10 @@
         <input type="date" name='date' value = "{{auth() -> user() -> date_of_birth}}">
         </div>
 
-        {{-- <div class="form-group">
+        <div class="form-group">
             <label for="email"> Email: </label>
         <input type="email" name='email' value = "{{auth() -> user() -> email}}">
-        </div> --}}
+        </div>
 
         <div class="form-group">
             <label for="password"> Password: </label>

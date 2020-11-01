@@ -101,7 +101,7 @@
 
   <script id="property-template" type="text/x-handlebars-template">
     <div class="property-search d-flex justify-content-between align-items-center">
-      <img src="img_db/properties/property.jpg" alt="">
+    <img src="img_db/properties/@{{img}}" alt="">
       <div class="property-search-text d-flex flex-column justify-content-between align-items-start">
         <h5 class="text-center">@{{ name }}</h5>
         <p>@{{ description }}</p>

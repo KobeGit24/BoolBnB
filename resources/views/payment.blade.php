@@ -10,33 +10,40 @@
         </div>
         <div class="card-body">
           <div class="card-text">
-          {{-- Non toccare il form - solo aggiungere classi --}}
-            <form id="payment-form" action="{{route('payment.store', $id)}}" method="post">
-                <!-- Putting the empty container you plan to pass to
-                  `braintree.dropin.create` inside a form will make layout and flow
-                  easier to manage -->
-                @csrf
-                @method('POST')
-
-                <div class="form-group">
-                    <label class="font-weight-bold font-italic" for="sponsorship">
-                      Type sponsorship
-                    </label>
-                    <select class="form-control" name="sponsorship">
-
-                      @foreach ($types_sponsorship as $sponsorship)
-                            <option value="{{$sponsorship -> name}}"> {{$sponsorship -> name}} - {{$sponsorship -> price}}</option>
-                      @endforeach
-
-                    </select>
-                </div>
-
-                <input type="hidden" value="{{$id}}" name="property_id">
-
-                <div id="dropin-container"></div>
-                <input class="btn btn-dark" type="submit" />
-                <input type="hidden" id="nonce" name="payment_method_nonce"/>
-            </form>
+          
+            @if ($just == 0)
+                
+            {{-- Non toccare il form - solo aggiungere classi --}}
+              <form id="payment-form" action="{{route('payment.store', $id)}}" method="post">
+                  <!-- Putting the empty container you plan to pass to
+                    `braintree.dropin.create` inside a form will make layout and flow
+                    easier to manage -->
+                  @csrf
+                  @method('POST')
+  
+                  <div class="form-group">
+                      <label class="font-weight-bold font-italic" for="sponsorship">
+                        Type sponsorship
+                      </label>
+                      <select class="form-control" name="sponsorship">
+  
+                        @foreach ($types_sponsorship as $sponsorship)
+                              <option value="{{$sponsorship -> name}}"> {{$sponsorship -> name}} - {{$sponsorship -> price}}</option>
+                        @endforeach
+  
+                      </select>
+                  </div>
+  
+                  <input type="hidden" value="{{$id}}" name="property_id">
+  
+                  <div id="dropin-container"></div>
+                  <input class="btn btn-dark" type="submit" />
+                  <input type="hidden" id="nonce" name="payment_method_nonce"/>
+              </form>
+              
+              @else
+                <h1> Appartamento già sponsorizzato </h1>
+            @endif
           </div>
         </div>
       </div>
