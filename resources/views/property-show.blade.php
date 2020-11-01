@@ -1,26 +1,13 @@
 @extends('layouts.app')
-<style>
 
-    #central{
-      width: 70%;
-      margin: 100px auto;
-    }
-
-    #container-box{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-    }
-
-    .casella{
-        margin: 5px;
-        padding: 10px;
-        text-align: center;
-        border: 1px solid black;
-    }
-  </style>
 @section('content')
+
+  <div class="card-width">
+    <div class="">
+
+    </div>
+
+  </div>
 
   {{-- <div id="central">
       <h1> {{$prop -> name}} </h1>
@@ -119,9 +106,8 @@
 
   <main class="main-property d-flex justify-content-center align-items-center">
   <div class="main-property-container d-flex flex-column justify-content-between align-items-start">
-    <div class="main-property-title">
+    <div class="main-property-title text-center">
       <h2>{{$prop -> name}}</h2>
-      <span>{{$prop -> address}} {{$prop -> city}}</span>
     </div>
     <div class="main-property-content d-flex justify-content-center">
       <div class="property-info">
@@ -131,6 +117,7 @@
             <div class="description">
               <h4>Descrizione</h4>
               <p>{{$prop -> description}}</p>
+              <p>{{$prop -> address}} {{$prop -> city}}</p>
             </div>
             <div class="amenities">
               <span><strong>Piano: </strong>{{$prop -> floors}} <strong>Letti: </strong>{{$prop -> beds}} <strong>Bagni: </strong>1 <strong>Metratura: </strong>{{$prop -> m2}}</span> <br>
@@ -141,10 +128,16 @@
                     @endif
                 @endforeach
               </span>
+            @if ($prop-> user_id == Auth::id() )
+              <div class="">
+                <a class="btn btn-success" href="{{ route('prop.info', $prop -> id) }}">Vedi statistiche e messaggi</a>
+                <a class="btn btn-primary" href="{{ route('payment.view', $prop -> id) }}"> Sponsorizza </a>
+              </div>
+            @endif
             </div>
           </div>
 
-          @if (!Auth::user())
+          @if (Auth::id() != $prop-> user_id)
 
             @if ($errors->any())
                 <div class="alert alert-danger">
@@ -179,13 +172,8 @@
       </div>
     </div>
   </div>
-  @if ($prop-> user_id == Auth::id() )
 
-    <a class="btn btn-danger" href="{{ route('prop.info', $prop -> id) }}">Vedi statistiche e messaggi</a>
-    <a class="btn btn-danger" href="{{ route('payment.view', $prop -> id) }}"> Sponsorizza </a>
-
-  @endif
-  </main>
+</main>
 
 <script type="text/javascript">
 

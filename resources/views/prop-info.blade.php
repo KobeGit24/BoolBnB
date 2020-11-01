@@ -1,52 +1,45 @@
 @extends('layouts.app')
 
-<style>
-
-  #prop-info{
-    width: 70%;
-    margin: 100px auto;
-    display: flex;
-    justify-content: space-around;
-  }
-
-  #messaggi,
-  #statistics {
-    width: 100%;
-    text-align: center;
-  }
-
-
-</style>
-
 @section('content')
 
-  <div id="prop-info">
-
-    <div id="messaggi">
-      <h2>messaggi</h2>
-      <ul>
-        @foreach ($requests as $request)
-          <li>
-            {{ $request-> firstname }}<br>
-            {{ $request-> lastname }}<br>
-            {{ $request-> text }}
-          </li>
-        @endforeach
-      </ul>
-
-
+  <div class="card-width">
+    <div class="card card-shadow m-3">
+      <div class="card-header input-title-text text-center">
+        {{ __('Statistiche') }}
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">
+          Total Views: <span id="views"> {{ $viewsNumber }} </span>
+        </h5>
+        <p class="card-text">
+          <canvas id="myChart"></canvas>
+        </p>
+      </div>
     </div>
-
-    <div id="statistics">
-      <h2>statistiche</h2>
-      <canvas id="myChart"></canvas>
-      <p>
-        Total Views: <span id="views"> {{ $viewsNumber }} </span>
-      </p>
-
+    <div class="card card-shadow m-3">
+      <div class="card-header input-title-text text-center">
+        {{ __('Messaggi') }}
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text">
+          <ul>
+            @foreach ($requests as $request)
+              <li>
+                <strong>From: </strong>
+                {{ $request-> firstname }} {{ $request-> lastname }}
+                <br>
+                <strong>Message: </strong>
+                {{ $request-> text }}
+              </li>
+              <hr>
+            @endforeach
+          </ul>
+        </p>
+      </div>
     </div>
-
   </div>
+
   <script>
 
   var dayToday = moment().format('dddd');
@@ -75,9 +68,9 @@
         ],
         datasets: [{
           label: 'Apartament Views',
-          backgroundColor: 'rgb(255, 99, 132)',
-          borderColor: 'rgb(255, 99, 132)',
-          pointBackgroundColor:'rgb(255, 99, 132)',
+          backgroundColor: '#0066ff',
+          borderColor: '#0066ff',
+          pointBackgroundColor:'#0066ff',
           data: [
             0,
             5,

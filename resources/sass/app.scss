@@ -22,23 +22,18 @@
 
 @import 'main-search.scss';
 
-
-// Auth
-
-@import 'register.scss';
-
 // Dashboard Profile
 
 @import 'dashboard.scss';
 
-// Edit Property
+// Card Control
 
-@import 'edit-property.scss';
+@import 'card-control.scss';
 
 
 body{
   font-family: 'Roboto', sans-serif;
-
+  background-color: #cee5f2;
 }
 
 li {
