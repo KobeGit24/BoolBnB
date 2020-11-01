@@ -12,12 +12,12 @@ class ServiceSeeder extends Seeder
      */
     public function run()
     {
-       factory(Service::class) -> times(1) -> create(['name' => 'wi-fi']);
-       factory(Service::class) -> times(1) -> create(['name' => 'parking']);
-       factory(Service::class) -> times(1) -> create(['name' => 'pool']);
-       factory(Service::class) -> times(1) -> create(['name' => 'concierge']);
-       factory(Service::class) -> times(1) -> create(['name' => 'sauna']);
-       factory(Service::class) -> times(1) -> create(['name' => 'sea view']);
+       factory(Service::class) -> times(1) -> create(['name' => 'wi-fi']);          // 1
+       factory(Service::class) -> times(1) -> create(['name' => 'parking']);        // 2
+       factory(Service::class) -> times(1) -> create(['name' => 'pool']);           // 3
+       factory(Service::class) -> times(1) -> create(['name' => 'concierge']);      // 4
+       factory(Service::class) -> times(1) -> create(['name' => 'sauna']);          // 5
+       factory(Service::class) -> times(1) -> create(['name' => 'sea view']);       // 6
        
 
     }

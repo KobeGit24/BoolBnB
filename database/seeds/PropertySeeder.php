@@ -153,7 +153,7 @@ class PropertySeeder extends Seeder
             'img' => 'roma2.jpg'
         ]);
 
-        // Appartamento 7
+        // Appartamento 8
         factory(Property::class) -> times(1) -> create([
             'name' => 'Casa Roma Nord',
             'state' => 'Italy',
@@ -325,7 +325,7 @@ class PropertySeeder extends Seeder
             'address' => "Calle Lion",
             'lat' => 45.436182,     
             'lng' => 12.345151,
-            'm2' => 100,
+            'm2' => 187,
             'floors' => 2,
             'beds' => 2,
             'bathrooms' => 1,
@@ -346,7 +346,7 @@ class PropertySeeder extends Seeder
             'lng' => 12.234014,
             'm2' => 100,
             'floors' => 2,
-            'beds' => 2,
+            'beds' => 1,
             'bathrooms' => 1,
             'available' => 0,
             'description' => 'Casa a Venezia',
@@ -357,7 +357,7 @@ class PropertySeeder extends Seeder
 
         // ===============================     Proprieta Firenze
         
-        // Appartamento 16
+        // Appartamento 17
         factory(Property::class) -> times(1) -> create([
             'name' => 'Casa a Firenze',
             'state' => 'Italy',
@@ -373,7 +373,47 @@ class PropertySeeder extends Seeder
             'description' => 'Casa a Firenze',
             'deleted' => 0,
             'user_id' => 10,
+            'img' => 'firenze1.jpg'
+        ]);
+
+        // Appartamento 18
+        factory(Property::class) -> times(1) -> create([
+            'name' => 'Abitazione storica a Firenze',
+            'state' => 'Italy',
+            'city' => 'Florence',
+            'address' => "Via Pier Capponi",
+            'lat' => 43.782896,       
+            'lng' => 11.264312,
+            'm2' => 233,
+            'floors' => 4,
+            'beds' => 4,
+            'bathrooms' => 2,
+            'available' => 0,
+            'description' => 'Abitazione storica a Firenze, ampia e spaziosa, ricca di reperti antichi',
+            'deleted' => 0,
+            'user_id' => 10,
             'img' => 'firenze2.jpg'
+        ]);
+
+        // ===============================     Proprieta Monza
+
+        // Appartamento 19
+        factory(Property::class) -> times(1) -> create([
+            'name' => 'Casa stile moderno, Monza',
+            'state' => 'Italy',
+            'city' => 'Monza',
+            'address' => "Via Cappuccini",
+            'lat' => 45.570638,        
+            'lng' => 9.259432,
+            'm2' => 170,
+            'floors' => 1,
+            'beds' => 3,
+            'bathrooms' => 2,
+            'available' => 0,
+            'description' => 'Abitazione storica a Firenze, ampia e spaziosa, ricca di reperti antichi',
+            'deleted' => 0,
+            'user_id' => 11,
+            'img' => 'monza.jpg'
         ]);
     }
 }

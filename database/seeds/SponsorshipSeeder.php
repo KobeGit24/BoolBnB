@@ -17,39 +17,34 @@ class SponsorshipSeeder extends Seeder
     {
 
         factory(Sponsorship::class) -> times(1) -> create([
-            'start_date' => '2020/10/20',
-            'end_date' => '2020/10/30',
+            'start_date' => date('Y/m/d'),
+            'end_date' => '2023/10/30',
             'property_id' => 1,
             'type_sponsorship_id' => 1
         ]);
 
         factory(Sponsorship::class) -> times(1) -> create([
-            'start_date' => '2020/10/15',
-            'end_date' => '2020/10/18',
-            'property_id' => 2,
+            'start_date' => date('Y/m/d'),
+            'end_date' => '2023/10/18',
+            'property_id' => 11,
             'type_sponsorship_id' => 1
         ]);
 
         factory(Sponsorship::class) -> times(1) -> create([
-            'start_date' => '2020/10/20',
-            'end_date' => '2020/10/30',
-            'property_id' => 3,
-            'type_sponsorship_id' => 2
-        ]);
-
-        factory(Sponsorship::class) -> times(1) -> create([
-            'start_date' => '2020/10/15',
-            'end_date' => '2020/10/18',
-            'property_id' => 4,
+            'start_date' => date('Y/m/d'),
+            'end_date' => '2023/10/30',
+            'property_id' => 7,
             'type_sponsorship_id' => 1
         ]);
 
         factory(Sponsorship::class) -> times(1) -> create([
-            'start_date' => '2020/10/20',
-            'end_date' => '2020/10/30',
-            'property_id' => 5,
-            'type_sponsorship_id' => 2
+            'start_date' => date('Y/m/d'),
+            'end_date' => '2023/10/18',
+            'property_id' => 19,
+            'type_sponsorship_id' => 1
         ]);
+
+        
 
     }
 }
