@@ -1,11 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-  <div class="container">
-    <div id="edit-property" class="row justify-content-center">
-      <div class="col-md-8">
-
-        <div class="card card-shadow">
+  <div class="card-width mt-4">
+    <div class="card card-shadow">
           <div class="card-header input-title-text text-center">{{ __('Modifica Dati proprietà') }}
           </div>
             <div class="card-body">
@@ -67,6 +64,7 @@
                     </div>
                 </div>
 
+                {{-- Beds --}}
                 <div class="form-group row">
                     <label for="beds" class="col-md-4 col-form-label text-md-right input-text"> {{ __('Beds') }} </label>
                     <div class="col-md-6">
@@ -75,6 +73,7 @@
                     </div>
                 </div>
 
+                {{-- Bathrooms --}}
                 <div class="form-group row">
                     <label for="bathrooms" class="col-md-4 col-form-label text-md-right input-text">{{ __('Bathrooms') }} </label>
                     <div class="col-md-6">
@@ -83,11 +82,12 @@
                     </div>
                 </div>
 
+                {{-- Property Img --}}
                 <div class="form-group row">
                     <label for="image" class="col-md-4 col-form-label text-md-right input-text">{{ __('Property Image') }} </label>
                     <div class="col-md-6">
 
-                      <input type="file" name="image" required autocomplete="image" autofocus>
+                      <input type="file" name="image">
                     </div>
                 </div>
 
@@ -114,7 +114,7 @@
                 <input type="hidden" name="id_property_edit" value="{{$property -> id}}">
 
                 {{-- Servizi --}}
-                <div class="form-group d-flex flex-md-row flex-lg-row flex-xl-row flex-sm-column justify-content-sm-start justify-content-md-around align-items-center">
+                <div class="form-group d-flex flex-xl-row flex-lg-row flex-md-row flex-sm-column justify-content-sm-start justify-content-md-around align-items-center service-property">
 
                     {{-- Per ogni servizio controlla se è già presente. Seèpresente lo stampa come cheched, altrimenti lostampavuoto --}}
                      @foreach ($services as $service)
@@ -139,8 +139,6 @@
               </form>
             </div>
         </div>
-      </div>
-    </div>
   </div>
 
 

@@ -1,53 +1,45 @@
 @extends('layouts.app')
 
-<style>
-
-  #dashboard{
-    width: 70%;
-    margin: 100px auto;
-  }
-
-
-</style>
-
-{{--
-  5555555555554444 carta MasterdCard
-  4005519200000004 Visa
-  6304000000000000 maestro
---}}
-
 @section('content')
 
-    <div id="dashboard">
+    <div class="card-width">
+      <div class="card card-shadow m-3">
 
-        <h1> Acquista sponsorizzazione </h1>
+        <div class="card-header input-title-text text-center">
+          {{ __('Sponsorhip') }}
+        </div>
+        <div class="card-body">
+          <div class="card-text">
+          {{-- Non toccare il form - solo aggiungere classi --}}
+            <form id="payment-form" action="{{route('payment.store', $id)}}" method="post">
+                <!-- Putting the empty container you plan to pass to
+                  `braintree.dropin.create` inside a form will make layout and flow
+                  easier to manage -->
+                @csrf
+                @method('POST')
 
-        {{-- Non toccare il form - solo aggiungere classi --}}
-        <form id="payment-form" action="{{route('payment.store', $id)}}" method="post">
-            <!-- Putting the empty container you plan to pass to
-              `braintree.dropin.create` inside a form will make layout and flow
-              easier to manage -->
-            @csrf
-            @method('POST')
+                <div class="form-group">
+                    <label class="font-weight-bold font-italic" for="sponsorship">
+                      Type sponsorship
+                    </label>
+                    <select class="form-control" name="sponsorship">
 
-            <div class="form-group">
-                <label for="sponsorship"> Type sponsorship </label>
-                <select name="sponsorship">
+                      @foreach ($types_sponsorship as $sponsorship)
+                            <option value="{{$sponsorship -> name}}"> {{$sponsorship -> name}} - {{$sponsorship -> price}}</option>
+                      @endforeach
 
-                    @foreach ($types_sponsorship as $sponsorship)
-                        <option value="{{$sponsorship -> name}}"> {{$sponsorship -> name}} - {{$sponsorship -> price}}</option>
-                    @endforeach
+                    </select>
+                </div>
 
-                </select>
-            </div>
+                <input type="hidden" value="{{$id}}" name="property_id">
 
-            <input type="hidden" value="{{$id}}" name="property_id">
-
-            <div id="dropin-container"></div>
-            <input type="submit" />
-            <input type="hidden" id="nonce" name="payment_method_nonce"/>
-        </form>
-
+                <div id="dropin-container"></div>
+                <input class="btn btn-dark" type="submit" />
+                <input type="hidden" id="nonce" name="payment_method_nonce"/>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
 
     {{-- Non toccare --}}
