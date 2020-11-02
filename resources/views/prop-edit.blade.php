@@ -3,9 +3,9 @@
 @section('content')
   <div class="card-width mt-4">
     <div class="card card-shadow">
-          <div class="card-header input-title-text text-center">{{ __('Modifica Dati proprietà') }}
-          </div>
-            <div class="card-body">
+      <div class="card-header input-title-text text-center">{{ __('Modifica Dati proprietà') }}
+      </div>
+      <div class="card-body">
               @if ($errors->any())
                   <div class="alert alert-danger">
                       <ul>
@@ -138,7 +138,7 @@
 
               </form>
             </div>
-        </div>
+    </div>
   </div>
 
 

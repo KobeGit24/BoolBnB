@@ -2,140 +2,48 @@
 
 @section('content')
 
-  <div class="card-width">
-    <div class="">
-
-    </div>
-
-  </div>
-
-  {{-- <div id="central">
-      <h1> {{$prop -> name}} </h1>
-
-      <h2> Dati sull'abitazione </h2>
-
-      <div id="container-box">
-            <div class="casella">
-                <p> Città: </p>
-                <p> {{$prop -> city}}</p>
-            </div>
-
-            <div class="casella">
-                <p> Indirizzo: </p>
-                <p> {{$prop -> address}}</p>
-            </div>
-
-            <div class="casella">
-                <p> Descrizione: </p>
-                <p> {{$prop -> description}}</p>
-            </div>
-
-            <div class="casella">
-                <p> m2: </p>
-                <p> {{$prop -> m2}}</p>
-            </div>
-
-            <div class="casella">
-                <p> Piani: </p>
-                <p> {{$prop -> floors}}</p>
-            </div>
-
-            <div class="casella">
-                <p> letti: </p>
-                <p> {{$prop -> beds}}</p>
-            </div>
-        </div>
-
-        <h3> Servizi: </h3>
-
-        @foreach ($services as $item)
-            @if ($item -> property_id == $prop -> id)
-               - {{$item -> service -> name}} -
-            @endif
-        @endforeach
-
-
-
-        @if (!Auth::user())
-
-            <h2> Fai un richiesta all'host </h2>
-
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-
-            <form method="post" action="{{route('store.request', $prop -> id)}}">
-                @csrf
-                @method('POST')
-
-                <div class="form-group">
-                    <label for="user_email"> Email: </label>
-                    <input type="email" name="user_email">
-                </div>
-
-                <div class="form-group">
-                    <label for="firstname"> Firstname: </label>
-                    <input type="text" name="firstname">
-                </div>
-
-                <div class="form-group">
-                    <label for="lastname"> Lastname: </label>
-                    <input type="text" name="lastname">
-                </div>
-
-                <div class="form-group">
-                    <label for="number"> Phone Number: </label>
-                    <input type="text" name="number">
-                </div>
-
-               <textarea name="text" rows="5" cols="50">
-               </textarea>
-
-               <div class="form-group">
-                   <button type="submit" class="btn btn-danger"> Send </button>
-               </div>
-            </form>
-        @endif
-  </div> --}}
-
-  <main class="main-property d-flex justify-content-center align-items-center">
-  <div class="main-property-container d-flex flex-column justify-content-between align-items-start">
-    <div class="main-property-title text-center">
+  <div class="main-property-container d-flex flex-column justify-content-between align-items-start pb-3">
+    <div class="main-property-title text-center w-100 border-bottom border-warning">
       <h2>{{$prop -> name}}</h2>
     </div>
     <div class="main-property-content d-flex justify-content-center">
-      <div class="property-info">
+      <div class="property-info w-100">
         <img src="{{asset('img_db/properties')}}/{{$prop -> img}}" alt="">
         <div class="property-info-content d-flex">
-          <div class="property-info-text d-flex flex-column justify-content-between">
+          <div class="property-info-text d-flex flex-column">
             <div class="description">
               <h4>Descrizione</h4>
-              <p>{{$prop -> description}}</p>
-              <p>{{$prop -> address}} {{$prop -> city}}</p>
+              <p class="text-secondary">{{$prop -> description}}</p>
+              <h5>Indirizzo</h5>
+              <p class="text-secondary">{{$prop -> address}}, {{$prop -> city}}</p>
             </div>
-            <div class="amenities">
-              <span><strong>Piano: </strong>{{$prop -> floors}} <strong>Letti: </strong>{{$prop -> beds}} <strong>Bagni: </strong>1 <strong>Metratura: </strong>{{$prop -> m2}}</span> <br>
-              <span>
+            <div class="amenities d-flex flex-column">
+              <p class="text-secondary"><strong class="text-dark">Piano: </strong>{{$prop -> floors}}
+              </p>
+              <p class="text-secondary">
+                  <i class="fas fa-bed text-dark"></i>: {{$prop -> beds}}
+              </p>
+              <p class="text-secondary">
+                <i class="fas fa-bath text-dark"></i>:
+                </strong>{{$prop -> bathrooms}}
+              </p>
+              <p class="text-secondary"><strong class="text-dark">M2: </strong>{{$prop -> m2}}</p>
+              <h5>Servizi Extra</h5>
+              <span class="text-secondary">
                 @foreach ($services as $item)
                     @if ($item -> property_id == $prop -> id)
                       -  {{$item -> service -> name}}
                     @endif
                 @endforeach
               </span>
-            @if ($prop-> user_id == Auth::id() )
-              <div class="">
-                <a class="btn btn-success" href="{{ route('prop.info', $prop -> id) }}">Vedi statistiche e messaggi</a>
-                <a class="btn btn-primary" href="{{ route('payment.view', $prop -> id) }}"> Sponsorizza </a>
-              </div>
-            @endif
             </div>
           </div>
+          @if ($prop-> user_id == Auth::id() )
+            <div class="d-flex flex-column justify-content-center align-items-end">
+              <a class="btn btn-success mb-2" href="{{ route('prop.info', $prop -> id) }}">Vedi statistiche e messaggi</a>
+              <a class="btn btn-primary mt-2 align-self-center" href="{{ route('payment.view', $prop -> id) }}"> Sponsorizza </a>
+            </div>
+          @endif
 
           @if (Auth::id() != $prop-> user_id)
 
@@ -153,13 +61,18 @@
               @csrf
               @method('POST')
 
-              <h3>Contatta {{$prop -> name}}</h3>
-              <input class="contact-email" type="email" name="user_email" value="" placeholder="la tua e-mail">
-              <input type="text" name="firstname" placeholder="nome">
-              <input type="text" name="lastname" placeholder="cognome">
-              <input type="text" name="number" placeholder="cellulare">
-              <textarea name="text" rows="5" cols="50" placeholder="Inserisci il tuo messaggio"></textarea>
-              <button class="contact-button" type="submit" name="button">Invia Messaggio</button>
+              <h3 class="text-primary">Contatta {{$prop -> name}}</h3>
+              <input class="form-control contact-email" type="email" name="user_email" value="" placeholder="inserisci e-mail" required autocomplete="user_email" autofocus>
+
+              <input class="form-control" type="text" name="firstname" placeholder="nome" required autocomplete="firstname" autofocus>
+
+              <input class="form-control" type="text" name="lastname" placeholder="cognome" required autocomplete="lastname" autofocus>
+
+              <input class="form-control" type="text" name="number" placeholder="cellulare" required autocomplete="number" autofocus>
+
+              <textarea class="form-control" name="text" rows="5" cols="50" placeholder="Inserisci il tuo messaggio"></textarea required autocomplete="text" autofocus>
+
+              <button class="btn btn-secondary contact-button" type="submit" name="button">Invia Messaggio</button>
             </form>
 
           @endif
@@ -167,13 +80,10 @@
         </div>
       </div>
 
-      <div class="property-map" id="mapContainer">
-
-      </div>
+      <div class="property-map w-100" id="mapContainer"></div>
     </div>
   </div>
 
-</main>
 
 <script type="text/javascript">
 

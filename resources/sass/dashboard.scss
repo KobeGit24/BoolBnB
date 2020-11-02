@@ -7,22 +7,27 @@
 
 }
 
-h3 {
+h2 {
   text-shadow: 3px 0px 3px rgba(0,0,0,0.38);
+  margin-top: 15px;
 }
 
-#upra-properties {
 
-  .card-prop {
-    min-width: 20rem;
-  }
-}
+
 
 @include media-breakpoint-up(lg) {
 
   .service-property {
     width: 80%;
     margin: 0 auto;
+  }
+
+  .card-property {
+
+    .card-prop {
+      // width: calc(100%/3 - 10px);
+      width: 23rem;
+    }
   }
 
 }
@@ -41,8 +46,18 @@ h3 {
 
 @include media-breakpoint-down(sm) {
 
-  #upra-properties {
+  .card-property {
     flex-direction: column;
   }
 
+}
+
+@include media-breakpoint-only(md) {
+
+  // #upra-properties {
+  //
+  //   .card-prop {
+  //     width: calc(100%/2 - 10px);
+  //   }
+  // }
 }

@@ -11100,8 +11100,8 @@ main {
 }
 
 .main-property .main-property-container {
-  width: 1100px;
-  padding: 40px 0;
+  width: 85%;
+  padding: 30px 0;
 }
 
 .main-property .main-property-container .main-property-content {
@@ -11109,17 +11109,23 @@ main {
   width: 100%;
   padding: 10px;
   margin-top: 20px;
+  box-shadow: 10px 10px 5px -2px rgba(0, 0, 0, 0.44);
   border-radius: 20px;
   background-color: white;
-  box-shadow: 0 0 10px lightgrey;
+}
+
+@media (max-width: 575.98px) {
+  .main-property .main-property-container .main-property-content {
+    justify-content: center;
+  }
 }
 
 .main-property .main-property-container .main-property-content .property-info {
-  width: 60%;
+  width: 100%;
 }
 
 .main-property .main-property-container .main-property-content .property-info img {
-  width: calc(100% - 20px);
+  width: 100%;
   height: 350px;
   border-radius: 20px;
 }
@@ -11130,12 +11136,12 @@ main {
 
 .main-property .main-property-container .main-property-content .property-info .property-info-content .property-info-text {
   padding: 10px;
-  width: 60%;
+  width: 55%;
   height: 100%;
 }
 
 .main-property .main-property-container .main-property-content .property-info .property-info-content .contact-owner {
-  width: 40%;
+  width: 45%;
   height: 100%;
   padding: 10px;
 }
@@ -11149,7 +11155,6 @@ main {
 
 .main-property .main-property-container .main-property-content .property-info .property-info-content .contact-owner h3 {
   font-size: 20px;
-  color: #7c98b3;
 }
 
 .main-property .main-property-container .main-property-content .property-info .property-info-content .contact-owner textarea {
@@ -11160,12 +11165,28 @@ main {
   align-self: center;
 }
 
-.main-property .main-property-container .main-property-content #mapContainer {
-  width: 40%;
+.main-property .main-property-container .main-property-content .property-map {
+  width: 100%;
   height: 100%;
+  margin-left: 10px;
   position: relative;
   z-index: 100;
-  border-radius: 20px;
+}
+
+@media (min-width: 992px) {
+  .property-map {
+    width: 40%;
+  }
+
+  .property-info {
+    width: 60%;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .property-map {
+    display: none;
+  }
 }
 
 .search-container {
@@ -11284,18 +11305,19 @@ main {
   align-items: center;
 }
 
-h3 {
+h2 {
   text-shadow: 3px 0px 3px rgba(0, 0, 0, 0.38);
-}
-
-#upra-properties .card-prop {
-  min-width: 20rem;
+  margin-top: 15px;
 }
 
 @media (min-width: 992px) {
   .service-property {
     width: 80%;
     margin: 0 auto;
+  }
+
+  .card-property .card-prop {
+    width: 23rem;
   }
 }
 
@@ -11310,7 +11332,7 @@ h3 {
 }
 
 @media (max-width: 767.98px) {
-  #upra-properties {
+  .card-property {
     flex-direction: column;
   }
 }
