@@ -1,20 +1,3 @@
-.search-container {
-
-  margin-top: 70px;
-  padding: 30px 20%;
-
-  width: 100%;
-
-  p {
-
-    margin-bottom: 0;
-  }
-
-  ul {
-
-    padding-inline-start: 0;
-  }
-
   .search-content {
 
     width: 100%;
@@ -29,13 +12,22 @@
     -webkit-box-shadow: 0 0 10px lightgrey;
     box-shadow: 0 0 10px lightgrey;
 
+    p {
+
+      margin-bottom: 0;
+    }
+
+    ul {
+
+      padding-inline-start: 0;
+
+      li {
+
+        margin-bottom: 10px;
+      }
+    }
+
     .form-search-container {
-
-      // color: white;
-
-      padding: 20px;
-
-      // background-color: #a2bce0;
 
       border-radius: 15px;
       border: 0.5px solid lightgrey;
@@ -50,9 +42,12 @@
 
       .aa-input-container {
 
-        input {
+        input[type="search"] {
 
           border-radius: 15px;
+
+          max-width: 100%;
+
         }
       }
 
@@ -62,27 +57,26 @@
 
         width: 70px;
 
-        margin-bottom: 50px;
+        margin-bottom: 30px;
+      }
+
+      h4 {
+
+        font-size: 25px;
+        font-weight: bold;
+
+        margin-bottom: 15px;
+
       }
 
       #filters {
 
         padding: 0;
 
-        h4 {
-
-          font-size: 30px;
-          font-weight: bold;
-
-          margin-bottom: 15px;
-
-        }
       }
     }
 
     .property-search-container {
-
-      width: 70%;
 
       #property-wall, #property-wall-promo {
 
@@ -102,7 +96,7 @@
       .property-search {
 
         width: 100%;
-        height: 300px;
+        // height: 300px;
 
         padding: 10px;
         margin-bottom: 20px;
@@ -128,6 +122,8 @@
 
           padding: 10px 0 20px 15px;
 
+          position: relative;
+
           h5 {
 
             font-weight: bold;
@@ -138,6 +134,11 @@
             color: grey;
 
             font-size: 16px;
+
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
           }
 
           a {
@@ -147,9 +148,264 @@
             border: 1px solid lightgrey;
 
             color: white;
+
+            position: absolute;
+
+            bottom: 10px;
+
+            right: 31%;
+          }
+        }
+      }
+    }
+  }
+
+  // Media Queries
+
+  // Extra small devices
+@media all and (min-width: 0px) and (max-width: 575px) {
+
+  .search-content {
+
+    background-color: inherit;
+
+    -webkit-box-shadow: none;
+    box-shadow: none;
+
+    .form-search-container {
+
+      background-color: white;
+
+      margin-bottom: 30px;
+      padding: 20px;
+
+      ul {
+
+        li {
+
+          padding: 10px;
+
+          margin-right: 10px;
+
+          border: 0.5px solid lightgrey;
+        }
+      }
+
+      .aa-input-container {
+
+        input[type="search"] {
+
+          width: 100%;
+        }
+      }
+    }
+
+    .property-search-container {
+
+      .property-search {
+
+        background-color: white;
+
+        img {
+
+          width: 100%;
+
+          margin-bottom: 20px;
+        }
+
+        .property-search-text {
+
+          width: 100%;
+
+          padding: 0 0 0 15px;
+
+          p:last-of-type {
+
+            margin-bottom: 50px;
+          }
+
+          h5 {
+
+            margin-bottom: 0;
+          }
+
+          a {
+
+            bottom: 20px;
+            right: 20px;
           }
         }
       }
     }
   }
 }
+
+  /* Small devices (landscape phones, 576px and up) */
+@media all and (min-width: 576px) and (max-width: 767px) {
+
+  .search-content {
+
+    .form-search-container{
+
+      margin-bottom: 30px;
+      padding: 20px;
+
+      .ap-input-icon svg {
+
+        right: 162px;
+      }
+
+      ul {
+
+        li {
+
+          padding: 10px;
+
+          margin-right: 10px;
+
+          border: 0.5px solid lightgrey;
+        }
+      }
+    }
+
+    .property-search-container {
+
+      .property-search {
+
+        height: 200px;
+
+        .property-search-text {
+
+          padding: 0 0 0 15px;
+
+          h5 {
+
+            margin-bottom: 0;
+          }
+
+          a {
+
+            bottom: 0;
+            right: 5%;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media all and (min-width: 768px) and (max-width: 991px) {
+
+  .search-content {
+
+    .form-search-container{
+
+      margin-bottom: 30px;
+      padding: 20px;
+
+      .ap-input-icon svg {
+
+        right: 345px;
+      }
+
+      ul {
+
+        li {
+
+          padding: 10px;
+
+          margin-right: 10px;
+
+          border: 0.5px solid lightgrey;
+        }
+      }
+    }
+
+    .property-search-container {
+
+      .property-search {
+
+        height: 250px;
+      }
+    }
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media all and (min-width: 992px) and (max-width: 1199px) {
+
+  .search-content {
+
+
+      .form-search-container {
+
+        width: 28%;
+
+        padding: 10px;
+
+
+        input {
+
+          max-width: 100%;
+        }
+
+        ul {
+
+          li {
+
+            padding: 5px 0;
+
+            border-bottom: 0.5px solid lightgrey;
+          }
+        }
+      }
+
+      .property-search-container {
+
+        width: 70%;
+
+        .property-search {
+
+          height: 250px;
+        }
+      }
+    }
+  }
+
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media all and (min-width: 1200px) {
+
+  .search-content {
+
+
+      .form-search-container {
+
+        width: 28%;
+
+        padding: 20px;
+
+        ul {
+
+          li {
+
+            padding: 5px 0;
+
+            border-bottom: 0.5px solid lightgrey;
+          }
+        }
+
+      }
+
+      .property-search-container {
+
+        width: 70%;
+
+        .property-search {
+
+          height: 280px;
+        }
+      }
+    }
+  }
