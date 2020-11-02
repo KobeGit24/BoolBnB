@@ -2,7 +2,7 @@
 
 @section('content')
   <div class="card-width">
-    <div class="dashboard">
+    <div class="dashboard m-3 border-bottom border-dark">
       <a class="btn btn-primary align-self-center mr-2 p-2 btn-card" href="{{route('prop.create')}}">
         Aggiungi una proprietà
       </a>
@@ -11,10 +11,10 @@
       </a>
     </div>
 
-    <h3 class="text-center font-weight-bold">
-      I Miei Annunci
-    </h3>
-    <div id="upra-properties" class="d-flex justify-content-center">
+      <h2 class="text-center font-weight-bold">
+        I Miei Annunci
+      </h2>
+    <div id="upra-properties" class="d-flex justify-content-center flex-md-wrap card-property">
       @foreach ($properties as $d_p)
         <div class="card card-shadow m-3 card-prop">
           <img class="card-img-top" src="{{asset('img_db/properties')}}/{{$d_p -> img}}" alt="property-image">
