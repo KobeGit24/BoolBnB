@@ -11189,22 +11189,7 @@ main {
   }
 }
 
-.search-container {
-  margin-top: 70px;
-  padding: 30px 20%;
-  width: 100%;
-}
-
-.search-container p {
-  margin-bottom: 0;
-}
-
-.search-container ul {
-  -webkit-padding-start: 0;
-          padding-inline-start: 0;
-}
-
-.search-container .search-content {
+.search-content {
   width: 100%;
   padding: 15px;
   background-color: white;
@@ -11212,57 +11197,65 @@ main {
   box-shadow: 0 0 10px lightgrey;
 }
 
-.search-container .search-content .form-search-container {
-  padding: 20px;
+.search-content p {
+  margin-bottom: 0;
+}
+
+.search-content ul {
+  -webkit-padding-start: 0;
+          padding-inline-start: 0;
+}
+
+.search-content ul li {
+  margin-bottom: 10px;
+}
+
+.search-content .form-search-container {
   border-radius: 15px;
   border: 0.5px solid lightgrey;
   box-shadow: 0 0 10px lightgrey;
 }
 
-.search-container .search-content .form-search-container > * {
+.search-content .form-search-container > * {
   margin-bottom: 20px;
 }
 
-.search-container .search-content .form-search-container .aa-input-container input {
+.search-content .form-search-container .aa-input-container input[type=search] {
   border-radius: 15px;
+  max-width: 100%;
 }
 
-.search-container .search-content .form-search-container button[type=submit] {
+.search-content .form-search-container button[type=submit] {
   border-radius: 10px;
   width: 70px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
-.search-container .search-content .form-search-container #filters {
-  padding: 0;
-}
-
-.search-container .search-content .form-search-container #filters h4 {
-  font-size: 30px;
+.search-content .form-search-container h4 {
+  font-size: 25px;
   font-weight: bold;
   margin-bottom: 15px;
 }
 
-.search-container .search-content .property-search-container {
-  width: 70%;
+.search-content .form-search-container #filters {
+  padding: 0;
 }
 
-.search-container .search-content .property-search-container #property-wall,
-.search-container .search-content .property-search-container #property-wall-promo {
+.search-content .property-search-container #property-wall,
+.search-content .property-search-container #property-wall-promo {
   width: 100%;
 }
 
-.search-container .search-content .property-search-container #property-wall:empty {
+.search-content .property-search-container #property-wall:empty {
   display: none;
 }
 
-.search-container .search-content .property-search-container #property-wall-promo:empty {
+.search-content .property-search-container #property-wall-promo:empty {
   display: none;
 }
 
-.search-container .search-content .property-search-container .property-search {
+.search-content .property-search-container .property-search {
   width: 100%;
-  height: 300px;
   padding: 10px;
   margin-bottom: 20px;
   border-radius: 15px;
@@ -11270,31 +11263,196 @@ main {
   box-shadow: 0 0 10px lightgrey;
 }
 
-.search-container .search-content .property-search-container .property-search img {
+.search-content .property-search-container .property-search img {
   height: 100%;
   width: 50%;
   border-radius: 15px;
 }
 
-.search-container .search-content .property-search-container .property-search .property-search-text {
+.search-content .property-search-container .property-search .property-search-text {
   width: 50%;
   height: 100%;
   padding: 10px 0 20px 15px;
+  position: relative;
 }
 
-.search-container .search-content .property-search-container .property-search .property-search-text h5 {
+.search-content .property-search-container .property-search .property-search-text h5 {
   font-weight: bold;
 }
 
-.search-container .search-content .property-search-container .property-search .property-search-text p {
+.search-content .property-search-container .property-search .property-search-text p {
   color: grey;
   font-size: 16px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
-.search-container .search-content .property-search-container .property-search .property-search-text a {
+.search-content .property-search-container .property-search .property-search-text a {
   background-color: #accbe1;
   border: 1px solid lightgrey;
   color: white;
+  position: absolute;
+  bottom: 10px;
+  right: 31%;
+}
+
+@media all and (min-width: 0px) and (max-width: 575px) {
+  .search-content {
+    background-color: inherit;
+    box-shadow: none;
+  }
+
+  .search-content .form-search-container {
+    background-color: white;
+    margin-bottom: 30px;
+    padding: 20px;
+  }
+
+  .search-content .form-search-container ul li {
+    padding: 10px;
+    margin-right: 10px;
+    border: 0.5px solid lightgrey;
+  }
+
+  .search-content .form-search-container .aa-input-container input[type=search] {
+    width: 100%;
+  }
+
+  .search-content .property-search-container .property-search {
+    background-color: white;
+  }
+
+  .search-content .property-search-container .property-search img {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .search-content .property-search-container .property-search .property-search-text {
+    width: 100%;
+    padding: 0 0 0 15px;
+  }
+
+  .search-content .property-search-container .property-search .property-search-text p:last-of-type {
+    margin-bottom: 50px;
+  }
+
+  .search-content .property-search-container .property-search .property-search-text h5 {
+    margin-bottom: 0;
+  }
+
+  .search-content .property-search-container .property-search .property-search-text a {
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+
+@media all and (min-width: 576px) and (max-width: 767px) {
+  .search-content .form-search-container {
+    margin-bottom: 30px;
+    padding: 20px;
+  }
+
+  .search-content .form-search-container .ap-input-icon svg {
+    right: 162px;
+  }
+
+  .search-content .form-search-container ul li {
+    padding: 10px;
+    margin-right: 10px;
+    border: 0.5px solid lightgrey;
+  }
+
+  .search-content .property-search-container .property-search {
+    height: 200px;
+  }
+
+  .search-content .property-search-container .property-search .property-search-text {
+    padding: 0 0 0 15px;
+  }
+
+  .search-content .property-search-container .property-search .property-search-text h5 {
+    margin-bottom: 0;
+  }
+
+  .search-content .property-search-container .property-search .property-search-text a {
+    bottom: 0;
+    right: 5%;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+
+@media all and (min-width: 768px) and (max-width: 991px) {
+  .search-content .form-search-container {
+    margin-bottom: 30px;
+    padding: 20px;
+  }
+
+  .search-content .form-search-container .ap-input-icon svg {
+    right: 345px;
+  }
+
+  .search-content .form-search-container ul li {
+    padding: 10px;
+    margin-right: 10px;
+    border: 0.5px solid lightgrey;
+  }
+
+  .search-content .property-search-container .property-search {
+    height: 250px;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+
+@media all and (min-width: 992px) and (max-width: 1199px) {
+  .search-content .form-search-container {
+    width: 28%;
+    padding: 10px;
+  }
+
+  .search-content .form-search-container input {
+    max-width: 100%;
+  }
+
+  .search-content .form-search-container ul li {
+    padding: 5px 0;
+    border-bottom: 0.5px solid lightgrey;
+  }
+
+  .search-content .property-search-container {
+    width: 70%;
+  }
+
+  .search-content .property-search-container .property-search {
+    height: 250px;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+
+@media all and (min-width: 1200px) {
+  .search-content .form-search-container {
+    width: 28%;
+    padding: 20px;
+  }
+
+  .search-content .form-search-container ul li {
+    padding: 5px 0;
+    border-bottom: 0.5px solid lightgrey;
+  }
+
+  .search-content .property-search-container {
+    width: 70%;
+  }
+
+  .search-content .property-search-container .property-search {
+    height: 280px;
+  }
 }
 
 .dashboard {
@@ -11369,12 +11527,22 @@ body {
   background-color: #cee5f2;
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 li {
   list-style: none;
 }
 
 a {
   text-decoration: none;
+}
+
+.main-padding {
+  margin-top: 70px;
+  padding: 30px 0;
 }
 
 .aa-input-container {
@@ -11437,5 +11605,15 @@ a {
   padding-top: 40px;
   margin-top: 70px;
   min-height: 688px;
+}
+
+.img-profile-header {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+}
+
+#options {
+  color: black !important;
 }
 
