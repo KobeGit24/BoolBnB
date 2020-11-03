@@ -157,6 +157,19 @@ class UserSeeder extends Seeder
             'remember_token' => Str::random(10),
         ]);
 
+        // Proprietario delle case Caserta
+        factory(User::class) -> times(1) -> create([
+            'firstname' => 'Biagio',
+            'lastname' => 'Timone',
+            'date_of_birth' => '1998/02/04',
+            'email' => 'case@caserta.it',
+            'email_verified_at' => now(),
+            'password' => Hash::make('provaprova'),
+            'visible' => 1,
+            'img' => 'user.png',
+            'remember_token' => Str::random(10),
+        ]);
+
 
 
         

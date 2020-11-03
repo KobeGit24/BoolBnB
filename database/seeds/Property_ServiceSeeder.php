@@ -104,6 +104,10 @@ class Property_ServiceSeeder extends Seeder
         //Proprieta 19
         factory(Property_service::class) -> times(1) -> create([ 'property_id' => 19, 'service_id' => 1]);
         factory(Property_service::class) -> times(1) -> create([ 'property_id' => 19, 'service_id' => 2]);
+
+        //Proprieta 19
+        factory(Property_service::class) -> times(1) -> create([ 'property_id' => 20, 'service_id' => 1]);
+        factory(Property_service::class) -> times(1) -> create([ 'property_id' => 20, 'service_id' => 2]);
         
     }
 }

@@ -265,6 +265,7 @@
               targetPromo.append(propertyHTML);
 
             } else {
+
               target.append(propertyHTML);
             }
 
