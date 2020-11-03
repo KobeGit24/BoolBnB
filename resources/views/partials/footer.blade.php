@@ -1,24 +1,32 @@
 <footer>
 
-    <div class="footer-container">
+    <div class="container">
 
-      <div class="footer-up d-flex justify-content-between align-items-center">
+      <div class="footer-up d-flex flex-wrap justify-content-between align-items-start">
         <ul>
           <li>Creato da:</li>
-          <li>Stefano Zaccaria</li>
-          <li>Valerio Trinca</li>
-          <li>Nicola Zoboli</li>
+          <li><a href="https://github.com/KobeGit24">Stefano Zaccaria</a></li>
+          <li><a href="https://github.com/ValerioTrinca">Valerio Trinca</a></li>
+          <li><a href="https://github.com/NicolaZoboli">Nicola Zoboli</a></li>
         </ul>
         <ul>
           <li>Tecnologie usate:</li>
-          <li>Laravel</li>
-          <li>Here Maps</li>
+          <li><a href="#">Laravel</a></li>
+          <li><a href="#">Here Maps</a></li>
+          <li><a href="#">ChartJs</a></li>
+          <li><a href="#">Algolia Places</a></li>
         </ul>
         <ul>
           <li>Ringraziamenti:</li>
           <li>Simone Icardi</li>
           <li>Giovanni Cappelletti</li>
           <li>Chiara Passaro</li>
+          <li>Andrea Castenetto</li>
+          <li>Raffaele Giammario</li>
+          <li>Margherita Gugliandolo</li>
+          <li>Marta Seminara</li>
+          <li>Fabio Forghieri</li>
+
         </ul>
       </div>
 

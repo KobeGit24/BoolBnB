@@ -2,32 +2,50 @@ footer {
 
   border-top: 1px solid white;
 
-  height: 250px;
+  height: 290px;
 
   background-color: #accbe1;
 
-  .footer-container {
+  // padding-top: 50px;
 
-    width: 100%;
-    height: 100%;
-
+  .container {
 
     .footer-up {
 
-      height: 180px;
-      padding: 0 20%;
+      height: 220px;
+
+      padding-top: 20px;
+
+
+      ul {
+
+        padding: 0;
+
+        li, li a {
+
+          font-size: 14px;
+        }
+
+        li a:hover {
+
+          color: grey;
+        }
+      }
 
       ul li:first-child {
 
         font-weight: bold;
+
+        &:hover {
+
+          color: black;
+        }
       }
     }
 
     .footer-down {
 
       height: 70px;
-
-      margin: 0 10%;
 
       border-top: 0.5px solid black;
 
@@ -39,4 +57,60 @@ footer {
       }
     }
   }
+}
+
+// Extra small devices
+@media all and (min-width: 0px) and (max-width: 575px) {
+
+  footer {
+
+    height: 400px;
+
+    .container {
+
+      .footer-up {
+
+        height: 330px;
+
+        ul li {
+
+          margin: 0 5px;
+        }
+      }
+
+      .footer-down {
+
+        height: 70px;
+
+        span {
+
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media all and (min-width: 576px) and (max-width: 767px) {
+
+
+}
+
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media all and (min-width: 768px) and (max-width: 991px) {
+
+
+}
+
+/* Large devices (desktops, 992px and up) */
+@media all and (min-width: 992px) and (max-width: 1199px) {
+
+
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media all and (min-width: 1200px) {
+
+
 }
