@@ -49,7 +49,7 @@ class Property_ServiceSeeder extends Seeder
         //Properita 8
         factory(Property_service::class) -> times(1) -> create([ 'property_id' => 8, 'service_id' => 1]);
         factory(Property_service::class) -> times(1) -> create([ 'property_id' => 8, 'service_id' => 2]);
-        factory(Property_service::class) -> times(1) -> create([ 'property_id' => 7, 'service_id' => 4]);
+        factory(Property_service::class) -> times(1) -> create([ 'property_id' => 8, 'service_id' => 4]);
 
         //Properita 9
         factory(Property_service::class) -> times(1) -> create([ 'property_id' => 9, 'service_id' => 1]);
@@ -68,7 +68,7 @@ class Property_ServiceSeeder extends Seeder
 
         //Proprieta 12
         factory(Property_service::class) -> times(1) -> create([ 'property_id' => 12, 'service_id' => 1]);
-        factory(Property_service::class) -> times(1) -> create([ 'property_id' => 9, 'service_id' => 6]);
+        factory(Property_service::class) -> times(1) -> create([ 'property_id' => 12, 'service_id' => 6]);
 
         //Properita 13
         factory(Property_service::class) -> times(1) -> create([ 'property_id' => 13, 'service_id' => 1]);
@@ -85,7 +85,7 @@ class Property_ServiceSeeder extends Seeder
         //Proprieta 15
         factory(Property_service::class) -> times(1) -> create([ 'property_id' => 15, 'service_id' => 1]);
         factory(Property_service::class) -> times(1) -> create([ 'property_id' => 15, 'service_id' => 4]);
-        factory(Property_service::class) -> times(1) -> create([ 'property_id' => 13, 'service_id' => 3]);
+        factory(Property_service::class) -> times(1) -> create([ 'property_id' => 15, 'service_id' => 3]);
         factory(Property_service::class) -> times(1) -> create([ 'property_id' => 15, 'service_id' => 6]);
 
         // Proprieta 16
@@ -93,7 +93,7 @@ class Property_ServiceSeeder extends Seeder
 
         //Proprieta 17
         factory(Property_service::class) -> times(1) -> create([ 'property_id' => 17, 'service_id' => 1]);
-        factory(Property_service::class) -> times(1) -> create([ 'property_id' => 13, 'service_id' => 2]);
+        factory(Property_service::class) -> times(1) -> create([ 'property_id' => 17, 'service_id' => 2]);
 
         //Proprieta 18
         factory(Property_service::class) -> times(1) -> create([ 'property_id' => 18, 'service_id' => 1]);
@@ -104,6 +104,10 @@ class Property_ServiceSeeder extends Seeder
         //Proprieta 19
         factory(Property_service::class) -> times(1) -> create([ 'property_id' => 19, 'service_id' => 1]);
         factory(Property_service::class) -> times(1) -> create([ 'property_id' => 19, 'service_id' => 2]);
+
+        //Proprieta 19
+        factory(Property_service::class) -> times(1) -> create([ 'property_id' => 20, 'service_id' => 1]);
+        factory(Property_service::class) -> times(1) -> create([ 'property_id' => 20, 'service_id' => 2]);
         
     }
 }

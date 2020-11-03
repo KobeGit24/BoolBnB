@@ -415,5 +415,24 @@ class PropertySeeder extends Seeder
             'user_id' => 11,
             'img' => 'monza.jpg'
         ]);
+
+        // Appartamento 19
+        factory(Property::class) -> times(1) -> create([
+            'name' => 'Appartamento a Frascati, Castelli Romani',
+            'state' => 'Italy',
+            'city' => 'Frascati',
+            'address' => "Via del Tuscolo",
+            'lat' => 41.803749,          
+            'lng' => 12.694135,
+            'm2' => 120,
+            'floors' => 1,
+            'beds' => 2,
+            'bathrooms' => 2,
+            'available' => 0,
+            'description' => 'Nel cuore dei Castelli Romani, si offre appartamento a Frascati',
+            'deleted' => 0,
+            'user_id' => 12,
+            'img' => 'property.jpg'
+        ]);
     }
 }
