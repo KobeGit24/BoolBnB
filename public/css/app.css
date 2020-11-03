@@ -11121,7 +11121,7 @@ main {
 
 #img-prop-show {
   width: 100%;
-  height: 350px;
+  height: auto;
   border-radius: 20px;
 }
 
