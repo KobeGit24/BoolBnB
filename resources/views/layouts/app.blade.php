@@ -11,9 +11,6 @@
     <title>Airbnb</title>
 
     <!-- Scripts -->
-    {{-- <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js%27%3E'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet'/>
-    <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script> --}}
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
     crossorigin="anonymous"></script>

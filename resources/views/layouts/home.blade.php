@@ -11,13 +11,17 @@
     <title>Airbnb</title>
 
     <!-- Scripts -->
-    {{-- <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js%27%3E'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet'/>
-    <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script> --}}
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
     crossorigin="anonymous"></script>
 
+    {{-- Here maps --}}
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-ui.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
@@ -35,13 +39,22 @@
 
     <!-- Handlebars -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js" charset="utf-8"></script>
+
+    <!-- Braintree pagamenti -->
+    <script src="https://js.braintreegateway.com/web/dropin/1.25.0/js/dropin.min.js"></script>
+
+    {{-- ChartJS --}}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+    {{-- MomentJS --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 </head>
 <body>
     <div id="app">
 
         @include('partials.header-home')
 
-        <main class="container d-flex justify-content-center align-items-center main-padding">
+        <main class="container d-flex flex-column justify-content-center align-items-center main-padding">
           @yield('content')
         </main>
 

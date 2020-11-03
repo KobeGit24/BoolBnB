@@ -8,7 +8,7 @@
     </div>
     <div class="main-property-content d-flex justify-content-center">
       <div class="property-info w-100">
-        <img src="{{asset('img_db/properties')}}/{{$prop -> img}}" alt="">
+        <img id="img-prop-show"src="{{asset('img_db/properties')}}/{{$prop -> img}}" alt="">
         <div class="property-info-content d-flex">
           <div class="property-info-text d-flex flex-column">
             <div class="description">
