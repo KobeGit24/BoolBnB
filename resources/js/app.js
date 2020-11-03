@@ -9,6 +9,9 @@ function init() {
 
   searchProperties();
   headerColor();
+  $('.fa-ellipsis-v').click(function(){
+    $('.dropdown-ham-xs').toggle('show');
+  });
 }
 // FUNZIONE PER CALCOLO KM DI DISTANZA
 

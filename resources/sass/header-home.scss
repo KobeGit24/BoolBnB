@@ -67,10 +67,17 @@ ul, ol {
 
     .logo {
 
-      color: #ff385c;
+      // color: #ff385c;
       text-shadow: none;
+      color: blue;
 
+      .b {
+        font-size: 25px;
+      }
 
+      .t-b {
+        color: blue;
+      }
     }
 
     .login, .join {
@@ -78,6 +85,8 @@ ul, ol {
       color: black;
       text-shadow: none;
     }
+
+
   }
 
   .jumbo-text {

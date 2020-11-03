@@ -12,8 +12,13 @@ h2 {
   margin-top: 15px;
 }
 
+.card-prop {
+  border-radius: 20px;
+}
 
-
+.card-prop>img {
+  border-radius: 20px;
+}
 
 @include media-breakpoint-up(lg) {
 
