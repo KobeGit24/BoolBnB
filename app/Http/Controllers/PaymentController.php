@@ -30,15 +30,23 @@ class PaymentController extends Controller
         $sponsorships = Sponsorship::where('property_id', '=', $id) -> get();
         $just = 0;
 
+        $now = strtotime(date('Y/m/d')); 
+        
+        $cout = 0;
         foreach($sponsorships as $sponsors){
-            if($sponsors -> end_date > date('Y/m/d')){
+            
+            $end_sponsorship = strtotime($sponsors -> end_date);
+            
+            if( $now < $end_sponsorship ){
                 $just = 1;
             break;
             }
+
+            $cout += 1;
         }
 
         $gateway = $this -> getGateway();
-                
+        
         $clientToken = $gateway->clientToken()->generate();
         $types_sponsorship = Type_Sponsorship::all();     
         

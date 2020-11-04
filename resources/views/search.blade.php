@@ -100,6 +100,7 @@
   <script id="property-template" type="text/x-handlebars-template">
     <div class="property-search d-flex flex-column flex-sm-row justify-content-between align-items-center">
       <img src="img_db/properties/@{{img}}" alt="">
+      <span class="spons-icon text-uppercase">Sponsored</span>
       <div class="property-search-text d-flex flex-column justify-content-between align-items-start">
         <h5 class="text-center">@{{ name }}</h5>
         <p>@{{ description }}</p>
