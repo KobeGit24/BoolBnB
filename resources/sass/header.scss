@@ -26,6 +26,11 @@
 
         padding-left: 20px;
       }
+
+      a:hover {
+
+        color: grey;
+      }
     }
 
     a {
@@ -41,7 +46,24 @@
 
     .logo {
 
-      color: #ff385c;
+      color: #20639b;
+
+      position: relative;
+
+      .text-danger {
+
+        display: flex;
+
+        position: absolute;
+        left: 18px;
+        top: 4px;
+      }
+
+      .lbnb {
+
+        position: absolute;
+        left: 57px;
+      }
     }
 
     .login {
