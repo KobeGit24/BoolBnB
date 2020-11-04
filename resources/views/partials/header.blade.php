@@ -1,6 +1,7 @@
 <header id="header">
   <div class="header-container d-flex flex-column">
 
+
     <div class="navbar-header">
       <div class="container d-flex justify-content-between align-items-center">
         <a class="logo" href="/">
@@ -69,11 +70,14 @@
                       </form>
 
 
+      
+
 
                   </div>
               </li>
             @endguest
         </ul>
+
       </div>
     </div>
   </div>
