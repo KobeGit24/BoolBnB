@@ -72,14 +72,16 @@ class ApiController extends Controller
 
     $queryPropertySponsor = Sponsorship::where('end_date', '>', date("Y/m/d"));
 
+    // dd($queryPropertySponsor);
 
     $prop = $queryProperty->get();
     $propPromo = $queryPropertySponsor->get();
 
+    
     return response()->json([
           'sponsored' => $propPromo,
           'normal' => $prop,
-      ]);
+    ]);
     // return response()->json($prop);
   }
 }

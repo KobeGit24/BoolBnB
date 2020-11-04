@@ -11117,7 +11117,6 @@ ol {
   padding: 0 10px;
 }
 
-
 #header .ham-menu {
   display: none;
   font-size: 20px;
@@ -11174,7 +11173,6 @@ ol {
 
 /* Extra large devices (large desktops, 1200px and up) */
 
-
 main {
   background-color: #cee5f2;
   border-top: 1px solid white;
@@ -11220,8 +11218,8 @@ main {
   width: 100%;
   padding: 10px;
   margin-top: 20px;
-  box-shadow: 10px 10px 5px -2px rgba(0, 0, 0, 0.44);
-  border-radius: 20px;
+  box-shadow: 0 0 10px lightgrey;
+  border-radius: 15px;
   background-color: white;
 }
 
@@ -11621,10 +11619,11 @@ h2 {
 .card-width {
   width: 80%;
   margin-bottom: 20px;
+  border-radius: 15px;
 }
 
 .card-width .card-shadow {
-  box-shadow: 10px 10px 5px -2px rgba(0, 0, 0, 0.44);
+  box-shadow: 0 0 10px lightgrey;
 }
 
 .card-width .input-text {
@@ -11656,9 +11655,7 @@ body {
 
 html {
   scroll-behavior: smooth;
-
   overflow-x: hidden;
-
 }
 
 li {
@@ -11859,7 +11856,8 @@ a {
 }
 
 .card-shadow {
-  box-shadow: 10px 10px 5px -2px rgba(0, 0, 0, 0.44);
+  box-shadow: 0 0 10px lightgrey;
+  border-radius: 15px;
 }
 
 .title-index {
@@ -11875,7 +11873,6 @@ a {
 #options {
   color: black !important;
 }
-
 
 .b {
   font-size: 25px;
@@ -11953,7 +11950,8 @@ a {
 
   .property-sponsored {
     width: 95%;
-
+  }
+}
 
 @media only screen and (max-width: 575px) {
   body {
@@ -11965,7 +11963,6 @@ a {
   html {
     width: 100vw;
     overflow-x: hidden;
-
   }
 }
 

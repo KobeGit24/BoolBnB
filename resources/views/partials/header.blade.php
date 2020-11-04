@@ -74,7 +74,7 @@
           @endguest
       </ul>
 
-
+{{-- 
     <div class="navbar-header">
       <div class="container d-flex justify-content-between align-items-center">
         <a class="logo" href="/">BoolBnB</a>
@@ -89,7 +89,7 @@
                     </li>
                 @endif
             @else
-             
+
 
                 <li class="nav-item dropdown">
                   <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -123,7 +123,7 @@
                     </div>
                 </li>
                 @endguest
-        </ul>
+        </ul> --}}
       </div>
 
     </div>

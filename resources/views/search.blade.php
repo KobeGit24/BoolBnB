@@ -106,8 +106,8 @@
         <p>@{{ address }}</p>
         <p>Metri Quadri: @{{ m2 }}</p>
         <p>Piani: @{{ floors }}</p>
-        <p>Bagni: @{{ bathrooms }}</p>
-        <p>Letti: @{{ beds }}</p>
+        <p><i class="fas fa-bath text-dark"></i>: @{{ bathrooms }}</p>
+        <p><i class="fas fa-bed text-dark"></i>: @{{ beds }}</p>
         <a href="/property/@{{ id }}" class="btn align-self-center">MOSTRA</a>
       </div>
     </div>
@@ -243,7 +243,8 @@
         for (var i = 0; i < sponsoredProperties.length; i++) {
 
           var sponsoredProp = sponsoredProperties[i];
-          var sponsoredPropId = sponsoredProp.id;
+          var sponsoredPropId = sponsoredProp.property_id;
+          console.log(sponsoredPropId);
 
           sponsorNum.push(sponsoredPropId);
 
