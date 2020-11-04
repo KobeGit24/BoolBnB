@@ -4,9 +4,15 @@ main {
   // background: rgb(2,0,36);
   // background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 0%, rgba(0,212,255,1) 77%);
 
-  border-top: 1px solid white;
+  // border-top: 1px solid white;
 
   min-height: 759px;
+
+  .homeh1 {
+
+    color: #20639b;
+
+  }
 }
 
 .home-main-container {
@@ -39,4 +45,25 @@ main {
   -webkit-box-shadow: 0 0 3px lightgrey;
     box-shadow: 0 0 3px grey;
     transition: all .25s ease-in-out;
+}
+
+.home-sponsored-container {
+
+  .btn-primary {
+
+    background-color: #20639b !important;
+  }
+}
+
+
+// Extra small devices
+@media all and (min-width: 0px) and (max-width: 575px) {
+
+  main {
+
+    .homeh1 {
+
+      font-size: 28px;
+    }
+  }
 }

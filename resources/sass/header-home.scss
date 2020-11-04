@@ -25,8 +25,6 @@ ul, ol {
 
   .navbar-header {
 
-    padding: 20px 15% 20px 20%;
-
     height: 70px;
     width: 100%;
 
@@ -34,11 +32,41 @@ ul, ol {
 
     z-index: 900;
 
+    .container {
+
+      height: 100%;
+
+      .logo {
+
+        position: relative;
+
+        .text-danger {
+
+          display: flex;
+
+          position: absolute;
+          left: 18px;
+          top: 4px;
+        }
+
+        .lbnb {
+
+          position: absolute;
+          left: 57px;
+        }
+      }
+    }
+
     .navbar-header-right {
 
       .join {
 
         padding-left: 20px;
+      }
+
+      a:hover {
+
+        color: lightgrey;
       }
     }
 
@@ -67,16 +95,11 @@ ul, ol {
 
     .logo {
 
-      // color: #ff385c;
       text-shadow: none;
-      color: blue;
+      color: #20639b;
 
       .b {
         font-size: 25px;
-      }
-
-      .t-b {
-        color: blue;
       }
     }
 
@@ -86,13 +109,20 @@ ul, ol {
       text-shadow: none;
     }
 
+    .navbar-header-right {
+
+      a:hover {
+
+        color: grey;
+      }
+    }
+
 
   }
 
   .jumbo-text {
 
     height: calc(70vh - 70px);
-    padding: 70px 0 0 20%;
 
     color: white;
 
