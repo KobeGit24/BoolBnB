@@ -46,21 +46,21 @@
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" id="options">
 
                     <a href='{{ route('dashboard') }}' class="dropdown-item">
-                        Dashboard
+                        <span class="menu-options-black"> Dashboard </span>
                     </a>
 
                     <a href=' {{route('prop.create')}}' class="dropdown-item">
-                        Aggiungi properità
+                      <span class="menu-options-black"> Aggiungi properità </span>
                     </a>
 
                     <a href='{{route('upr.update')}}' class="dropdown-item">
-                        Modifica account
+                      <span class="menu-options-black"> Modifica account </span>
                     </a>
 
                     <a class="dropdown-item" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
+                        <span class="menu-options-black"> Logout </span>
                     </a>
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
