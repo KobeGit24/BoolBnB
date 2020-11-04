@@ -14,11 +14,8 @@ Autori:
 
     - Valerio Trinca
     - Stefano Zaccaria
-    - Andrea Pirrello
     - Nicola Zoboli
-    - Margherita Gugliandolo
-
-    Prova se funziona pull request
+  
 
 ## Introduzione
 BoolBnB è una applicazione per trovare e gestire l’affitto di appartamenti.
