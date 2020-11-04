@@ -16,7 +16,7 @@
       </h2>
     <div id="upra-properties" class="d-flex justify-content-center flex-md-wrap card-property">
       @foreach ($properties as $d_p)
-        <div class="card card-shadow m-3 card-prop">
+        <div class="card card-shadow m-3 card-prop p-2">
           <img class="card-img-top" src="{{asset('img_db/properties')}}/{{$d_p -> img}}" alt="property-image">
           <div class="card-body">
             <h5 class="card-title">{{ $d_p-> name }}</h5>

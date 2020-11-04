@@ -2,12 +2,12 @@
 
 @section('content')
 
-  <div class="card-width">
-    <div class="card card-shadow m-3">
+  <div class="card-width d-flex flex-column align-items-center justify-content-center">
+    <div class="card card-shadow m-3 w-100">
       <div class="card-header input-title-text text-center">
         {{ __('Statistiche') }}
       </div>
-      <div class="card-body">
+      <div class="card-body ">
         <h5 class="card-title">
           Total Views: <span id="views"> {{ $viewsNumber }} </span>
         </h5>
@@ -16,7 +16,7 @@
         </p>
       </div>
     </div>
-    <div class="card card-shadow m-3">
+    <div class="card card-shadow m-3 w-100">
       <div class="card-header input-title-text text-center">
         {{ __('Messaggi') }}
       </div>
