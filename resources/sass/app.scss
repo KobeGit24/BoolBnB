@@ -35,10 +35,13 @@ body{
   background-color: #cee5f2;
 }
 
+
+
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
 }
+
 
 li {
 
@@ -55,6 +58,8 @@ a {
   margin-top: 70px;
 
   padding: 30px 0;
+
+  min-height: calc(100vh - 320px);
 }
 
 .aa-input-container {
@@ -236,6 +241,7 @@ a {
   color: black !important;
 }
 
+
 .b {
   font-size: 25px;
 }
@@ -324,3 +330,19 @@ a {
     width: 95%;
   }
 }
+
+@media only screen and (max-width:575px) {
+
+    body{
+    width:100%;
+    overflow-x:hidden;
+    overflow-y:hidden;
+  }
+
+    html{
+      width: 100vw;
+      overflow-x: hidden;
+    }
+}
+
+
