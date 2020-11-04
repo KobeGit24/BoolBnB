@@ -72,7 +72,7 @@ class PropertyController extends Controller
         
         $new_request = Property_request::create($data);
         
-        // Redirect verso la home
-        return redirect() -> route('home');
+        // Ricarica la pagina corrente
+        return redirect() -> route('prop.show', $id);
     }
 }
