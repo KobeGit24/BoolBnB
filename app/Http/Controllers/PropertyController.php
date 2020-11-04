@@ -61,18 +61,17 @@ class PropertyController extends Controller
         'email' => ['string', 'max:255'],
         ]);
 
-        
+
         $data = $request -> all();
-        
+
         $property = Property::findOrFail($id);
         $usr_id = $property -> user -> id;
-        
+
         $data['user_id'] = $usr_id;
         $data['property_id'] = intval($id);
-        
+
         $new_request = Property_request::create($data);
-        
-        // Redirect verso la home
-        return redirect() -> route('home');
+
+        return redirect() -> route('prop.show', $id);
     }
 }

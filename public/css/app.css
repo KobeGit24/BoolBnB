@@ -11359,6 +11359,10 @@ textarea {
   width: 100%;
 }
 
+.search-content .property-search-container #property-wall .property-search span.spons-icon {
+  display: none;
+}
+
 .search-content .property-search-container #property-wall:empty {
   display: none;
 }
@@ -11369,10 +11373,11 @@ textarea {
 
 .search-content .property-search-container .property-search {
   width: 100%;
+  position: relative;
   padding: 10px;
   margin-bottom: 20px;
-  border-radius: 15px;
   border: 0.5px solid lightgrey;
+  border-radius: 15px;
   box-shadow: 0 0 10px lightgrey;
 }
 
@@ -11380,6 +11385,19 @@ textarea {
   height: 100%;
   width: 50%;
   border-radius: 15px;
+}
+
+.search-content .property-search-container .property-search span.spons-icon {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  color: grey;
+  padding: 5px 8px;
+  background-color: white;
+  border-radius: 8px;
+  border: 0.5px solid lightgrey;
 }
 
 .search-content .property-search-container .property-search .property-search-text {
@@ -11395,7 +11413,7 @@ textarea {
 
 .search-content .property-search-container .property-search .property-search-text p {
   color: grey;
-  font-size: 16px;
+  font-size: 14px;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 2;
