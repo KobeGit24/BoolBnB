@@ -5,13 +5,14 @@
     <div class="navbar-header">
       <div class="container d-flex justify-content-between align-items-center">
         <a class="logo" href="/">
-          <span class="text-primary b">
-            b
+          <span class="b">
+            B
           </span>
           <span class="text-danger b">
             <i class="fas fa-map-marker-alt"></i>
+            <i class="fas fa-map-marker-alt"></i>
           </span>
-          <span class="text-primary b">
+          <span class="lbnb b">
             lbnb
           </span>
         </a>
@@ -70,7 +71,7 @@
                       </form>
 
 
-      
+
 
 
                   </div>

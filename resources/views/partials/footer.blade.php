@@ -15,6 +15,7 @@
           <li><a href="#">Here Maps</a></li>
           <li><a href="#">ChartJs</a></li>
           <li><a href="#">Algolia Places</a></li>
+          <li><a href="#"> Braintree payments </a></li>
         </ul>
         <ul>
           <li>Ringraziamenti:</li>
